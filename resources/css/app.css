@@ -1,0 +1,28 @@
+
+
+/* @import "bootstrap/dist/css/bootstrap.min.css";
+@import "./components/navbar.css";
+@import "./components/footer.css";
+@import "./components/home.css";
+@import "./components/blogs.css";
+@import "./components/blogs_details.css";
+@import "./components/contacts_us.css";
+@import "./components/portfolio.css";
+@import "./components/portfolio_details.css";
+@import "./components/service_all.css";
+@import "./components/service_details.css"; */
+
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+@import "./components/navbar.css";
+@import "./components/footer.css";
+@import "./components/home.css";
+@import "./components/blogs.css";
+@import "./components/blogs_details.css";
+@import "./components/contact_us.css";
+@import "./components/portfolio.css";
+@import "./components/portfolio_details.css";
+@import "./components/service_all.css";
+@import "./components/service_details.css";
+

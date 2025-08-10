@@ -1,0 +1,18 @@
+/* footer section */
+.footer{
+    background-color: #f5e6d1;
+}
+.footer .container-fluid{
+    background-color: #f38603;
+}
+.mid-footer-title{
+    font-size: 200px;
+    letter-spacing: 17px;
+}
+/* media query */
+@media screen and (max-width: 788px) {
+    .mid-footer-title{
+        font-size: 80px;
+        letter-spacing: 10px;
+    } 
+}
