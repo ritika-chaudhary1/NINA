@@ -21,14 +21,20 @@
                         <span><i class="fas fa-phone-alt me-2"></i>(+778) 000-0665</span>
                         <span class="ms-1"><i class="fas fa-envelope me-2"></i>nina99@gmail.com</span>
                     </div>
-                    <div class="col-12 col-md-6 text-center text-md-end">
-                        <span>
-                            Follow Me ______
-                            <i class="fab fa-facebook-f ms-2"></i>
-                            <i class="fab fa-twitter ms-2"></i>
-                            <i class="fab fa-instagram ms-2"></i>
-                        </span>
-                    </div>
+                    <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+  @auth
+    <!-- Show Logout form/button when logged in -->
+    <form method="POST" action="{{ route('admin.logout') }}">
+      @csrf
+      <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+    </form>
+  @else
+    <!-- Show Login button when logged out -->
+    <a href="{{ route('admin.login') }}" class="btn btn-primary btn-sm">Login</a>
+  @endauth
+</div>
+
+
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,16 @@ Route::get('/blogs', function () {
 Route::get('/blogs-details', function () {
     return view('blogs-details.index'); // your blog detail view
 })->name('blogs.details');
+
+//for admin
+Route::get('admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('admin/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect()->route('admin.login');
+})->name('admin.logout');
+Route::get('admin/dashboard', function () {
+    return view('admin.dashboard'); // create this view or return a simple message for now
+})->name('admin.dashboard')->middleware('auth');
