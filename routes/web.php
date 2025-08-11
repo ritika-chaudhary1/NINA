@@ -3,13 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
-
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\BlogDetailsController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +21,10 @@ use App\Http\Controllers\BlogDetailsController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 // Blogs listing route
 // Route::get('/blogs', function () {
@@ -67,7 +63,3 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
     ->name('admin.profile.update')
     ->middleware('auth');
 
-//for blogs
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('blogs', BlogController::class);
-});
