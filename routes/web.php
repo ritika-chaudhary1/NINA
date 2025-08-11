@@ -4,10 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f4b6cbdfca6efbdee02ce6cc6cfab46cb611541f
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\HomeController;
@@ -77,12 +74,10 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
     ->name('admin.profile.update')
     ->middleware('auth');
 
-<<<<<<< HEAD
 //for blogs
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('blogs', BlogController::class);
 });
-=======
 //for service section
 
 // Admin routes for services (no show, because frontend handles it)
@@ -93,4 +88,3 @@ Route::resource('service-details', ServiceDetailController::class);
 
 // Frontend route to display a single service with its details
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
->>>>>>> f4b6cbdfca6efbdee02ce6cc6cfab46cb611541f
