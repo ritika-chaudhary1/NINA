@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +28,10 @@ use App\Http\Controllers\AdminProfileController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 // Blogs listing route
 Route::get('/blogs', function () {
@@ -64,3 +70,13 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
     ->name('admin.profile.update')
     ->middleware('auth');
 
+//for service section
+
+// Admin routes for services (no show, because frontend handles it)
+Route::resource('services', ServiceController::class)->except(['show']);
+
+// Admin routes for service details CRUD
+Route::resource('service-details', ServiceDetailController::class);
+
+// Frontend route to display a single service with its details
+Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
