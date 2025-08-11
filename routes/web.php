@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +42,23 @@ Route::post('admin/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect()->route('admin.login');
+    return redirect('/');   // Redirect to home page
 })->name('admin.logout');
+Route::get('/login', function () {
+    return redirect()->route('admin.login'); // redirect to your admin login page
+})->name('login');
+
 Route::get('admin/dashboard', function () {
     return view('admin.dashboard'); // create this view or return a simple message for now
 })->name('admin.dashboard')->middleware('auth');
+
+Route::get('admin/profile', function () {
+    $admin = Auth::user();
+    return view('admin.profile', compact('admin'));
+})->name('admin.profile')->middleware('auth');
+
+
+Route::post('admin/profile', [AdminProfileController::class, 'update'])
+    ->name('admin.profile.update')
+    ->middleware('auth');
+
