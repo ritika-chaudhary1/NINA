@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
+
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +31,14 @@ Route::get('/', function () {
 });
 
 // Blogs listing route
-Route::get('/blogs', function () {
-    return view('blogs.index'); // or your blogs listing view
-})->name('blogs.index');
+// Route::get('/blogs', function () {
+//     return view('blogs.index'); 
+// })->name('blogs.index');
 
 // Blogs detail route (if you have one)
-Route::get('/blogs-details', function () {
-    return view('blogs-details.index'); // your blog detail view
-})->name('blogs.details');
+// Route::get('/blogs-details', function () {
+//     return view('blogs-details.index'); 
+// })->name('blogs.details');
 
 //for admin
 Route::get('admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -62,3 +67,7 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
     ->name('admin.profile.update')
     ->middleware('auth');
 
+//for blogs
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('blogs', BlogController::class);
+});

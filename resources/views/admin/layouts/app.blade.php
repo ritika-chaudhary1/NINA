@@ -166,7 +166,7 @@
           <div class="collapse collapse-inner ps-4" id="blogsSubmenu">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="#">All Blogs</a>
+                <a class="nav-link" href="{{ route('admin.blogs.index') }}">All Blogs</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Add New Blog</a>

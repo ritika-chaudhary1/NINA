@@ -415,7 +415,7 @@
 
         <div class="col-lg-7">
             <div class="px-2 d-inline-block border border-secondary rounded-pill">16 November, 2023</div>
-            <h3 class="blog-title pt-3">Our Web Design & Development Process</h3>
+            <h3 class="blog-title pt-3">{{ $blogs->title}}</h3>
             <p class="blog-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
         </div>
