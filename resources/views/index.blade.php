@@ -457,7 +457,7 @@
 </section>
 
    <!-- Contact Section -->
-<section class="contact-section bg-black py-5 mt-3 mb-2 rounded-3">
+{{-- <section class="contact-section bg-black py-5 mt-3 mb-2 rounded-3">
     <div class="container">
         <h6 class="section-heading text-center">GET IN TOUCH</h6>
         <h2 class="section-title text-white text-center">Want To <span class="text-danger">Enrich</span> Yourself, Always Connect with Us</h2>
@@ -488,5 +488,5 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 @endsection
