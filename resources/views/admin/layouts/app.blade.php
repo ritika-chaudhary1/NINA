@@ -157,6 +157,25 @@
       </div>
     </li>
 
+    <li class="nav-item">
+  <a class="nav-link" href="#categorySubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="categorySubmenu">
+    <i class="fas fa-tags"></i>
+    <span class="menu-text">Category</span>
+    <i class="fas fa-caret-down ms-auto"></i>
+  </a>
+  <div class="collapse collapse-inner ps-4" id="categorySubmenu">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.categories.index') }}">All Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.categories.create') }}">Add New Category</a>
+      </li>
+    </ul>
+  </div>
+</li>
+
+
         <li class="nav-item">
           <a class="nav-link" href="#blogsSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="blogsSubmenu">
             <i class="fas fa-blog"></i>
@@ -169,7 +188,7 @@
                 <a class="nav-link" href="{{ route('admin.blogs.index') }}">All Blogs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Add New Blog</a>
+                <a class="nav-link" href="{{ route('admin.blogs_details.index')}}">Blog Details</a>
               </li>
             </ul>
           </div>
@@ -200,7 +219,7 @@
     </nav>
 
     <!-- Page Content -->
-    <main id="content">
+    <main id="content text-center" class="flex-grow-1 p-4">
       @yield('content')
     </main>
   </div>
