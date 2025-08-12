@@ -4,18 +4,20 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
-use App\Http\Controllers\HomeController;
-
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ServiceDetailsController;
-
 
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\BlogDetailsController;
+use App\Http\Controllers\BlogDetailController;
 
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceDetailController;
+
+use App\Http\Controllers\AdminCategoryController;
+
+use App\Http\Controllers\Frontend\BlogDetailController as FrontendBlogDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +79,7 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
 //for blogs
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('blogs', BlogController::class);
+    Route::resource('blogs_details', BlogDetailController::class);
 });
 //for service section
 
@@ -88,3 +91,14 @@ Route::resource('service-details', ServiceDetailController::class);
 
 // Frontend route to display a single service with its details
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::get('/blogs-details', [FrontendBlogDetailController::class, 'index'])->name('blogs_details.index');
+
+Route::get('/blogs', [FrontendBlogDetailController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{id}', [FrontendBlogDetailController::class, 'show'])->name('blogs.show');
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    Route::resource('categories', AdminCategoryController::class);
+});
+
+
