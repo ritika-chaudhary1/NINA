@@ -378,21 +378,28 @@
                 <h2 class="section-title text-black text-center mb-5">Visit <span class="text-danger">My Blog</span> And
                     Keep Your Feedback</h2>
 
-                <div class="row align-items-center mx-5 border-top border-secondary p-3">
+                    @foreach($blogs as $blog)
+<div class="row align-items-center mx-5 border-top border-secondary p-3">
+  <div class="col-lg-7">
+    <div class="px-2 d-inline-block border border-secondary rounded-pill">
+      {{ $blog->created_at->format('d F, Y') }}
+    </div>
+    <h3 class="blog-title pt-3">{{ $blog->title }}</h3>
+    <p class="blog-text">{{ \Illuminate\Support\Str::limit($blog->description, 120) }}</p>
+  </div>
 
-        <div class="col-lg-7">
-            <div class="px-2 d-inline-block border border-secondary rounded-pill">16 November, 2023</div>
-            <h3 class="blog-title pt-3">{{ $blogs->title}}</h3>
-            <p class="blog-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+  <div class="col-lg-5">
+    @if($blog->image)
+      <img class="rounded-3" src="{{ asset('storage/' . $blog->image) }}" alt="blog-image">
+    @else
+      <img class="rounded-3" src="{{ asset('images/blog-image.jpg') }}" alt="blog-image">
+    @endif
+  </div>
+</div>
+@endforeach
 
-                    </div>
-                    <div class="col-lg-5">
-                        <img class="rounded-3" src="{{ asset('images/blog-image.jpg') }}" alt="blog-image">
-                    </div>
 
-                </div>
-
-                <div class="row align-items-center mx-5 border-top border-secondary p-3">
+                {{-- <div class="row align-items-center mx-5 border-top border-secondary p-3">
 
                     <div class="col-lg-7">
                         <div class="px-2 d-inline-block border border-secondary rounded-pill">16 November, 2023</div>
@@ -418,7 +425,7 @@
                         <img class="rounded-3" src="{{ asset('images/blog-image.jpg') }}" alt="blog-image">
                     </div>
 
-                </div>
+                </div> --}}
 
             </div>
         </section>

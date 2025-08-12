@@ -38,15 +38,23 @@
                 <td>{{ Str::limit($blog->description, 80) }}</td>
                 <td>{{ $blog->created_at->format('d M, Y') }}</td>
                 <td>
-                    <a href="{{ route('admin.blogs.show', $blog) }}" class="btn btn-sm btn-primary">View</a>
-                    <a href="{{ route('admin.blogs.edit', $blog) }}" class="btn btn-sm btn-secondary">Edit</a>
+                    <a href="{{ route('admin.blogs.show', $blog) }}" class="btn btn-sm btn-outline-primary" title="View">
+    <i class="fas fa-eye"></i>
+</a>
 
-                    <form action="{{ route('admin.blogs.destroy', $blog) }}" method="POST" class="d-inline"
-                          onsubmit="return confirm('Are you sure to delete this blog?')">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                    </form>
+<a href="{{ route('admin.blogs.edit', $blog) }}" class="btn btn-sm btn-outline-secondary" title="Edit">
+    <i class="fas fa-edit"></i>
+</a>
+
+<form action="{{ route('admin.blogs.destroy', $blog) }}" method="POST" class="d-inline"
+      onsubmit="return confirm('Are you sure to delete this blog?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-sm btn-outline-danger" title="Delete">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</form>
+
                 </td>
             </tr>
             @endforeach
