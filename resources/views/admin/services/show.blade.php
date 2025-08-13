@@ -3,7 +3,7 @@
 
 @section('content')
     <h1>{{ $service->title }}</h1>
-    <p>{{ $service->short_description }}</p>
+    {{-- <p>{{ $service->category }}</p> --}}
     <p><strong>Icon:</strong> {{ $service->icon }}</p>
 
     <h3>Service Details</h3>
@@ -23,5 +23,5 @@
         <p>No details available.</p>
     @endif
 
-    <a href="{{ route('services.index') }}" class="btn btn-secondary mt-3">Back</a>
+    <a href="{{ route('adminservices.index') }}" class="btn btn-secondary mt-3">Back</a>
 @endsection

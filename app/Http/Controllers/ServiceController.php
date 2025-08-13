@@ -11,27 +11,39 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::latest()->paginate(10);
-        return view('services.index', compact('services'));
-    }
+        
+        return view('admin.services.index', compact('services'));
+  
+
+    // $services = Service::with('categories')->latest()->paginate(10);
+    
+    //      dd($services);
+    // return view('admin.services.index', compact('services'));
+}
+
+    
 
     // Show the form for creating a new service
     public function create()
     {
-        return view('services.create');
+        return view('admin.services.create');
     }
 
     // Store a newly created service in storage
     public function store(Request $request)
     {
+       
+
         $request->validate([
             'title' => 'required|string|max:255',
-            'short_description' => 'nullable|string',
+        //    'category' => 'required|string|max:255',
             'icon' => 'nullable|string|max:255',
         ]);
 
-        Service::create($request->only('title', 'short_description', 'icon'));
+        Service::create($request->only('title', 'icon'));
 
-        return redirect()->route('services.index')
+
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service created successfully.');
     }
       //for show
@@ -39,7 +51,7 @@ class ServiceController extends Controller
    public function show($id)
 {
     $service = Service::with('details')->findOrFail($id);
-    return view('services.show', compact('service'));
+    return view('admin.services.show', compact('service'));
 }
 
 
@@ -47,7 +59,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrFail($id);
-        return view('services.edit', compact('service'));
+        return view('admin.services.edit', compact('service'));
     }
 
     // Update the specified service in storage
@@ -57,13 +69,14 @@ class ServiceController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'short_description' => 'nullable|string',
+        //    'category' => 'required|string|max:255',
+
             'icon' => 'nullable|string|max:255',
         ]);
 
-        $service->update($request->only('title', 'short_description', 'icon'));
+        $service->update($request->only('title',  'icon'));
 
-        return redirect()->route('services.index')
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service updated successfully.');
     }
 
@@ -73,7 +86,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->delete();
 
-        return redirect()->route('services.index')
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service deleted successfully.');
     }
 }

@@ -14,6 +14,7 @@ class HomeController extends Controller
         $service = Service::all();
         $blogs = Blog::latest()->get();
         $contactus = ContactUs::all();
+        
         // $data['service'] = Service::all();
         // dd($service);
         return view('index', compact('service', 'blogs', 'contactus'));

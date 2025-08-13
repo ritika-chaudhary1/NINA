@@ -209,8 +209,8 @@
           </a>
           <div class="collapse collapse-inner ps-4" id="featuresSubmenu">
             <ul class="nav flex-column">
-              <li class="nav-item"><a class="nav-link" href="{{ route('services.index') }}">Service all</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ route('service-details.index') }}">Service Details</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('admin.services.index') }}">Service all</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('admin.service-details.index') }}">Service Details</a></li>
             </ul>
           </div>
         </li>
