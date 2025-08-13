@@ -79,11 +79,12 @@
             <div class="text-center">
                 <h6 class="shadow-lg p-1 p-sm-3 mb-5 bg-body-tertiary rounded d-inline-block">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" class="btn btn-danger">All</button>
-                        <button type="button" class="btn btn-outline-danger">Brand App</button>
-                        <button type="button" class="btn btn-outline-danger">Ios App</button>
-                        <button type="button" class="btn btn-outline-danger">More Page</button>
-                        <button type="button" class="btn btn-outline-danger">Site</button>
+                        <a href="#" class="btn btn-danger">All</a>
+                        <a href="#" class="btn btn-outline-danger">Brand App</a>
+                        <a href="#" class="btn btn-outline-danger">iOS App</a>
+                        <a href="#" class="btn btn-outline-danger">More Page</a>
+                        <a href="#" class="btn btn-outline-danger">Site</a>
+
                     </div>
                 </h6>
             </div>

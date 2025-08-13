@@ -143,6 +143,13 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route ('admin.portfolio_categories.index')}}">
+        <i class="fas fa-tachometer-alt"></i>
+        <span class="menu-text">Portfolio Category</span>
+      </a>
+    </li>
+
         <li class="nav-item">
       <a class="nav-link" href="#portfolioSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="portfolioSubmenu">
         <i class="fas fa-briefcase"></i>
@@ -151,8 +158,8 @@
       </a>
       <div class="collapse collapse-inner ps-4" id="portfolioSubmenu">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link" href="#">All Portfolios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Add New Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.portfolio.index')}}">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.portfolio_details.index')}}">Portfolio Details</a></li>
         </ul>
       </div>
     </li>
@@ -209,7 +216,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('admin.contact_us.index') }}">
             <i class="fas fa-envelope"></i>
             <span class="menu-text">Contact Us</span>
           </a>
