@@ -56,13 +56,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ps-5 gap-4 d-flex justify-content-between">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/service_all.index') }}">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/portfolio') }}">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Clients</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/blogs') }}">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+  <a class="nav-link" href="{{ route('service_all.index') }}">Features</a>
+
+<li class="nav-item"><a class="nav-link" href="{{ route('portfolio.index') }}">Portfolio</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('clients') }}">Clients</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+
                     </ul>
                     <button class="btn btn-danger ms-3">Start Project</button>
                 </div>

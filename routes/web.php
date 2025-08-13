@@ -44,7 +44,39 @@ use App\Http\Controllers\ContactUsController;
 // Route::get('/', function () {
 //     return view('index');
 // });
+// Home page
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+// Features / Services list
+Route::get('/service-all', function () {
+    return view('service_all.index'); // points to service_all/index.blade.php
+})->name('service_all.index');
+
+// Portfolio page
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+
+// Clients page (static for now, you can link to a view)
+Route::get('/clients', function () {
+    return view('clients'); // create resources/views/clients.blade.php
+})->name('clients');
+
+// Pricing page (static for now)
+Route::get('/pricing', function () {
+    return view('pricing'); // create resources/views/pricing.blade.php
+})->name('pricing');
+
+// Blog listing
+Route::get('/blogs', [FrontendBlogDetailController::class, 'index'])->name('blogs.index');
+
+// Blog detail
+Route::get('/blogs/{id}', [FrontendBlogDetailController::class, 'show'])->name('blogs.show');
+
+// Contact page
+Route::get('/contact', function () {
+    return view('contact'); // create resources/views/contact.blade.php
+})->name('contact');
+
+
 
 // Blogs listing route
 // Route::get('/blogs', function () {
