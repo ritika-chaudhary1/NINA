@@ -57,6 +57,7 @@
                         <a class="text-black fw-bold fs-4" href="#">{{ $services->title }}</a>
                     </div>
                     <div class="col-12 col-lg-8">
+               
                         <span
                             class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">WordPress
                         </span>
@@ -67,7 +68,9 @@
                     </div>
                 </div>
                 @endforeach
-                
+
+                 
+         
 
             </div>
         </section>

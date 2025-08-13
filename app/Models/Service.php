@@ -9,10 +9,11 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'short_description', 'icon'];
+    protected $fillable = ['title','icon'];
 
     public function details()
     {
         return $this->hasMany(ServiceDetail::class)->orderBy('order');
     }
+  
 }

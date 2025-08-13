@@ -10,6 +10,7 @@ class HomeController extends Controller
     public function home(Request $request)
     {
         $service = Service::all();
+        
         // $data['service'] = Service::all();
         // dd($service);
         return view('index', compact('service'));

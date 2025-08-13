@@ -73,10 +73,20 @@ Route::post('admin/profile', [AdminProfileController::class, 'update'])
 //for service section
 
 // Admin routes for services (no show, because frontend handles it)
-Route::resource('services', ServiceController::class)->except(['show']);
+// Route::prefix('admin')->name('admin.')->group(function () {
+
+// Route::resource('services', ServiceController::class)->except(['show']);
+
+
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('services', ServiceController::class);
+
 
 // Admin routes for service details CRUD
 Route::resource('service-details', ServiceDetailController::class);
 
 // Frontend route to display a single service with its details
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+});
