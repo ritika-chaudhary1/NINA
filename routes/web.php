@@ -19,6 +19,13 @@ use App\Http\Controllers\AdminCategoryController;
 
 use App\Http\Controllers\Frontend\BlogDetailController as FrontendBlogDetailController;
 
+use App\Http\Controllers\PortfolioCategoryController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PortfolioDetailController;
+
+use App\Http\Controllers\ContactUsController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,4 +108,22 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::resource('categories', AdminCategoryController::class);
 });
 
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('portfolio_categories', PortfolioCategoryController::class);
+        Route::resource('portfolio', PortfolioController::class);
+        Route::resource('portfolio_details', PortfolioDetailController::class);
+    });
+
+    // Public route to submit contact form
+Route::post('/contact-submit', [ContactMessageController::class, 'store'])->name('contact.submit');
+
+// Admin routes - group with admin middleware/auth if needed
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact_us.index');
+    Route::get('/contact-us/create', [ContactUsController::class, 'create'])->name('contact_us.create');  // <-- Add this
+    Route::get('/contact-us/{contactUs}', [ContactUsController::class, 'show'])->name('admin.contact_us.show');
+    Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
+});
 
