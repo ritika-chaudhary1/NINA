@@ -30,6 +30,11 @@
         </div>
 
         <div class="mb-3">
+            <label for="description" class="form-label">Description (optional)</label>
+            <textarea name="description" class="form-control" rows="4">{{ $detail->description }}</textarea>
+        </div>
+
+        <div class="mb-3">
             <label for="image" class="form-label">Image (optional)</label>
             @if($detail->image)
                 <div class="mb-2">

@@ -43,6 +43,7 @@ class ServiceDetailController extends Controller
             'service_id' => 'required|exists:services,id',
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
+            'description' => 'nullable|string',
             'image'      => 'nullable|image|max:2048',
             'order'      => 'nullable|integer',
         ]);
@@ -78,6 +79,7 @@ class ServiceDetailController extends Controller
             'service_id' => 'required|exists:services,id',
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
+            'description' => 'nullable|string',
             'image'      => 'nullable|image|max:2048',
             'order'      => 'nullable|integer',
         ]);

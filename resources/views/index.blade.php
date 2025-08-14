@@ -57,14 +57,11 @@
                         <a class="text-black fw-bold text-decoration-none fs-4" href="#">{{ $services->title }}</a>
                     </div>
                     <div class="col-12 col-lg-8">
-               
-                        <span
-                            class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">WordPress
-                        </span>
-                        <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
-                            Brand </span>
-                        <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
-                            Laravel </span>
+                        @foreach($services->serviceCategories as $category)
+                            <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
+                                {{ $category->name }}
+                            </span>
+                        @endforeach
                     </div>
                 </div>
                 @endforeach
@@ -388,7 +385,7 @@
       {{ $blog->created_at->format('d F, Y') }}
     </div>
     <h3 class="blog-title pt-3">{{ $blog->title }}</h3>
-    <p class="blog-text">{{ \Illuminate\Support\Str::limit($blog->description, 120) }}</p>
+    <p class="blog-text">{{ Str::limit($blog->description, 120) }}</p>
   </div>
 
   <div class="col-lg-5">

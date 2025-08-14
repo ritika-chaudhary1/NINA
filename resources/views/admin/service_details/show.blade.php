@@ -2,19 +2,41 @@
 
 @section('content')
 <div class="container mt-4">
-    <h2>Service Detail: {{ $detail->heading }}</h2>
-
-    <p><strong>Service:</strong> {{ $detail->service->title }}</p>
-    <p><strong>Content:</strong></p>
-    <p>{{ $detail->content }}</p>
-
-    @if($detail->image)
-        <p><strong>Image:</strong></p>
-        <img src="{{ asset('storage/'.$detail->image) }}" alt="Image" width="200">
-    @endif
-
-    <p><strong>Order:</strong> {{ $detail->order ?? '-' }}</p>
-
-    <a href="{{ route('admin.service_details.index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    <div class="card">
+        <div class="card-header">
+            <h2>{{ $detail->service->title }} - {{ $detail->heading }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>Content:</h5>
+                    <p class="mb-3">{{ $detail->content }}</p>
+                    
+                    @if($detail->description)
+                    <h5>Description:</h5>
+                    <p class="mb-3">{{ $detail->description }}</p>
+                    @endif
+                    
+                    <div class="text-muted">
+                        <small>Order: {{ $detail->order ?? 'Not set' }}</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @if($detail->image)
+                        <img src="{{ asset('storage/'.$detail->image) }}" alt="Service Detail Image" class="img-fluid rounded">
+                    @else
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-image fa-3x mb-2"></i>
+                            <p>No image</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ route('admin.service_details.edit', $detail->id) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('admin.service_details.index') }}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
 </div>
 @endsection

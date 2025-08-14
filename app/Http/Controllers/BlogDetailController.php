@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogDetail;
+use App\Models\BlogDetails;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ class BlogDetailController extends Controller
 {
     public function index()
     {
-        $blogs = BlogDetail::latest()->paginate(10);
+        $blogs = BlogDetails::latest()->paginate(10);
         return view('admin.blogs_details.index', compact('blogs'));
     }
 
@@ -49,7 +49,7 @@ $validated = $request->validate([
     $validated['categories'] = null;
 }
 
-        BlogDetail::create($validated);
+        BlogDetails::create($validated);
 
         return redirect()->route('admin.blogs_details.index')->with('success', 'Blog created successfully!');
     }
