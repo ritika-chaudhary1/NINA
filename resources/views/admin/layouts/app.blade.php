@@ -167,16 +167,16 @@
     <li class="nav-item">
   <a class="nav-link" href="#categorySubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="categorySubmenu">
     <i class="fas fa-tags"></i>
-    <span class="menu-text">Category</span>
+    <span class="menu-text">Blog Category</span>
     <i class="fas fa-caret-down ms-auto"></i>
   </a>
   <div class="collapse collapse-inner ps-4" id="categorySubmenu">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.categories.index') }}">All Categories</a>
+        <a class="nav-link" href="{{ route('admin.blog_categories.index') }}">All Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.categories.create') }}">Add New Category</a>
+        <a class="nav-link" href="{{ route('admin.blog_categories.create') }}">Add New Category</a>
       </li>
     </ul>
   </div>

@@ -27,7 +27,17 @@
                 <td>{{ $msg->email }}</td>
                 <td>{{ $msg->subject ?? '-' }}</td>
                 <td>{{ $msg->created_at->format('F d, Y H:i') }}</td>
-                <td><a href="{{ route('admin.contact_us.show', $msg->id) }}" class="btn btn-primary btn-sm">View</a></td>
+                <td><a href="{{ route('admin.contact_us.show', $msg->id) }}" class="btn btn-sm btn-outline-primary" title="View">
+    <i class="fas fa-eye"></i>
+</a>
+<form action="{{ route('admin.contact_us.destroy', $msg->id) }}" method="POST" class="d-inline"
+      onsubmit="return confirm('Are you sure to delete this blog?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-sm btn-outline-danger" title="Delete">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</form></td>
             </tr>
             @endforeach
         </tbody>

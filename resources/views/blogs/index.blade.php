@@ -14,7 +14,7 @@
             <h1>Blogs All</h1>
             <p>
                 <a href="{{ url('/') }}">Home</a> / 
-                <a href="{{ url('/blogs') }}">Blogs Detail</a>
+                <a href="{{ route('blogs_details') }}">Blogs Detail</a>
             </p>
         </div>
     </div>

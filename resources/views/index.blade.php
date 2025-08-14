@@ -381,7 +381,7 @@
                 <h2 class="section-title text-black text-center mb-5">Visit <span class="text-danger">My Blog</span> And
                     Keep Your Feedback</h2>
 
-                    @foreach($blogs as $blog)
+                    @foreach($blogs_details as $blog)
 <div class="row align-items-center mx-5 border-top border-secondary p-3">
   <div class="col-lg-7">
     <div class="px-2 d-inline-block border border-secondary rounded-pill">

@@ -25,7 +25,7 @@ class AdminCategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
-            'type' => 'required|string|max:255|unique:categories,type',
+            'type' => 'required',
             'description' => 'nullable|string',
         ]);
 
@@ -51,7 +51,7 @@ class AdminCategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
-            'type' => 'required|string|max:255|unique:categories,type,' . $category->id,
+            'type' => 'required,' . $category->id,
             'description' => 'nullable|string',
         ]);
 

@@ -58,7 +58,6 @@
                     <ul class="navbar-nav ps-5 gap-4 d-flex justify-content-between">
                   <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
   <a class="nav-link" href="{{ route('service_all.index') }}">Features</a>
-
 <li class="nav-item"><a class="nav-link" href="{{ route('portfolio.index') }}">Portfolio</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('clients') }}">Clients</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">Pricing</a></li>

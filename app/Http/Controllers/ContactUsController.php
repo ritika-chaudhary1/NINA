@@ -46,4 +46,12 @@ class ContactUsController extends Controller
     return view('admin.contact_us.show', compact('contactUs'));
 }
 
+public function destroy(ContactUs $contactUs)
+{
+    $contactUs->delete();
+
+    return redirect()->route('admin.contact_us.index')
+                     ->with('success', 'Message deleted successfully!');
+}
+
 }
