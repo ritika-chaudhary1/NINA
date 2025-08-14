@@ -54,7 +54,7 @@
                 @foreach($service as $services)
                 <div class="row py-3 border-top border-bottom border-secondary">
                     <div class="col-12 col-lg-4">
-                        <a class="text-black fw-bold fs-4" href="#">{{ $services->title }}</a>
+                        <a class="text-black fw-bold text-decoration-none fs-4" href="#">{{ $services->title }}</a>
                     </div>
                     <div class="col-12 col-lg-8">
                

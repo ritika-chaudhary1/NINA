@@ -12,6 +12,7 @@ use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminServiceCategoryController;
 use App\Http\Controllers\Frontend\BlogDetailController as FrontendBlogDetailController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
@@ -24,6 +25,9 @@ use App\Http\Controllers\ContactMessageController;
 | Frontend Routes
 |--------------------------------------------------------------------------
 */
+
+
+
 
 // Home
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -89,7 +93,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
     // Services
     Route::resource('services', ServiceController::class);
-    Route::resource('service-details', ServiceDetailController::class);
+    Route::resource('service_details', ServiceDetailController::class);
+    Route::resource('service-categories', AdminServiceCategoryController::class);
 
     // Categories
     Route::resource('categories', AdminCategoryController::class);

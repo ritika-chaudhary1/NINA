@@ -12,6 +12,11 @@ class Category extends Model
     protected $fillable = [
         'name',
         'type',
-        'description', // add if you have this column
+       
     ];
+
+ public function services()
+    {
+        return $this->belongsToMany(Service::class, 'category_service');
+    }
 }
