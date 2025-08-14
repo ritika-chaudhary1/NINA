@@ -3,8 +3,8 @@
 
 @section('content')
     <h1>{{ $service->title }}</h1>
-    {{-- <p>{{ $service->category }}</p> --}}
-    <p><strong>Icon:</strong> {{ $service->icon }}</p>
+    <p>{{ $service->category }}</p>
+    
 
     <h3>Service Details</h3>
     @if($service->details->count())

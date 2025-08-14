@@ -17,6 +17,40 @@
         </section>
 
     <!-- Services Section -->
+   {{-- <section class="services-section py-5 mt-3 mb-2 rounded-3">
+            <div class="container px-5">
+                <h6 class="section-heading text-center">TOP FEATURES</h6>
+                <h2 class="section-title text-black text-center">What <span class="text-danger">Services</span> I Provide To
+                    My Clients In Here</h2>
+
+                <!-- first -->
+                @foreach($services as $service)
+                <div class="row py-3 border-top border-bottom border-secondary">
+                    <div class="col-12 col-lg-4">
+                        <a class="text-black fw-bold text-decoration-none fs-4" href="#">{{ $services->title }}</a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+               
+                        <span
+                            class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">WordPress
+                        </span>
+                        <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
+                            Brand </span>
+                        <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
+                            Laravel </span>
+                    </div>
+                </div>
+                @endforeach
+
+                 
+         
+
+            </div>
+        </section>
+
+@endsection --}}
+
+
     <section class="services-section py-5 mt-3 mb-2 rounded-3">
         <div class="container px-5">
             <h6 class="section-heading text-center">TOP FEATURES</h6>

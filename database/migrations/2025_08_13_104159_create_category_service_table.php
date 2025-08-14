@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-           $table->id();
-           $table->string('title');
-           $table->text('short_description')->nullable();
-           $table->string('icon')->nullable();
-           $table->timestamps();
-    });
-
+        Schema::create('category_service', function (Blueprint $table) {
+            $table->id();
+            
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+        
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('category_service');
     }
 };
