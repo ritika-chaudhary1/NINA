@@ -5,12 +5,13 @@
     <section class="hero-section mb-2 rounded-bottom-3">
         <div class="container">
             <div class="row text-center text-white">
-                <h1>{{ $service->title }} - Service Details</h1>
+                {{-- <h1>{{ $service->title }} - Service Details</h1> --}}
+                <h1> Service Details</h1>
                 
                 <p>
                     <a href="{{ url('/') }}">Home</a> /
                     <a href="{{ route('service_all.index') }}">Services All</a> 
-                    <span>{{ $service->title }}</span>
+                    {{-- <span>{{ $service->title }}</span> --}}
                 </p>
             </div>
         </div>
