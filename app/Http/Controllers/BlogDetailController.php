@@ -11,7 +11,9 @@ class BlogDetailController extends Controller
 {
     public function index()
     {
+        // dd('This is the blog detail index method. You can customize it as needed.');
         $blogs = BlogDetail::latest()->paginate(10);
+
         return view('admin.blogs_details.index', compact('blogs'));
     }
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Models\Blog;
-use App\Models\BlogDetail;
 use App\Models\ContactUs;
 use App\Models\BlogCategory;
+use App\Models\BlogDetail;
+use App\Models\ServiceDetail;
 use App\Models\PortfolioDetail;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
         $service = Service::all();
         $blogs_details = BlogDetail::latest()->get();
-
         $contactus = ContactUs::all();
     $portfolio_details = PortfolioDetail::latest()->take(6)->get();
     $clients = Client::latest()->get(); 
@@ -57,10 +56,20 @@ public function portfolioList()
     return view('portfolios.index', compact('portfolio_details'));
 }
 
-public function portfolioDetail()
+public function portfolioDetail(PortfolioDetail $portfolio_detail)
 {
-    $portfolio_details = PortfolioDetail::latest()->paginate(10);
-    return view('portfolio_detail.index', compact('portfolio_details'));
+    return view('portfolio_detail.index', compact('portfolio_detail'));
+}
+
+public function serviceDetail(Service $service)
+{
+    $service->load(['details', 'serviceCategories']);
+
+    $serviceDetails = ServiceDetail::where('service_id', $service->id)
+            ->orderBy('order')
+            ->get();
+
+    return view('service_detail.index', compact('service', 'serviceDetails'));
 }
     
 }

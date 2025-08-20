@@ -121,4 +121,5 @@ class ServiceDetailController extends Controller
         $detail = ServiceDetail::findOrFail($id);
         return view('admin.service_details.show', compact('detail'));
     }
+    
 }

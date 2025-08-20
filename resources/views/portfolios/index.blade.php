@@ -9,7 +9,7 @@
                     <h1>Portfolio</h1>
                     <p>
                         <a href="{{ url('/') }}">Home</a> /
-                        <a href="{{ route('portfolio_detail.index') }}">Portfolio Details</a>
+                        <a href="#">Portfolio Details</a>
                     </p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
         <div class="row">
             @foreach($portfolio_details as $detail)
                 <div class="col-md-4 mb-4">
-                    <a href="{{ route('portfolio_detail.index', $detail->id) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('portfolio_detail.index', $detail) }}" class="text-decoration-none text-dark">
                     <div class="project-card">
                         @if($detail->image)
                             <img src="{{ asset('storage/' . $detail->image) }}" alt="{{ $detail->title }}" class="img-fluid" />

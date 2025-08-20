@@ -27,20 +27,34 @@ use App\Http\Controllers\{
 |--------------------------------------------------------------------------
 */
 
-// Home & Pages
+// Services page
+Route::get('/service', [ServiceController::class, 'frontendIndex'])->name('service.index');
+
+Route::get('/contacts_us', function () {
+    return view('contacts_us.index');
+})->name('contacts_us.index');
+
+//HomeController Routes
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [HomeController::class, 'blogList'])->name('blog.index');
 Route::get('/blog_detail/{id?}', [HomeController::class, 'blogDetail'])->name('blog_detail.index');
 Route::get('/portfolios', [HomeController::class, 'portfolioList'])->name('portfolios.index');
-Route::get('/portfolio_detail', [HomeController::class, 'portfolioDetail'])->name('portfolio_detail.index');
+Route::get('/portfolio_detail/{portfolio_detail}', [HomeController::class, 'portfolioDetail'])->name('portfolio_detail.index');
+Route::get('/service_detail/{service}', [HomeController::class, 'serviceDetail'])->name('service_detail.index');
 
-// Services & Portfolio
-Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
-Route::get('/service-detail', [ServiceDetailController::class, 'index'])->name('service_detail.index');
+
+Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
+
+// Portfolio page
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 
 // Static Pages
 Route::view('/pricing', 'pricing')->name('pricing');
+
+// Blogs
+// Route::get('/blog_detail/{id}', [FrontendBlogDetailController::class, 'show'])->name('blog_detail.show');
+
+// Contact page
 Route::view('/contact', 'contact')->name('contact');
 Route::get('/contacts_us', function () { return view('contacts_us.index'); })->name('contacts_us.index');
 
@@ -84,8 +98,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('profile', fn() => view('admin.profile', ['admin' => Auth::user()]))->name('profile');
     Route::post('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
-    // Blog Categories & Blogs
+
+    // Blog Categories
     Route::resource('blog_categories', BlogCategoryController::class);
+
+    // Blogs
     Route::resource('blogs', BlogController::class);
     Route::resource('blogs_details', BlogDetailController::class);
 
@@ -101,10 +118,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Clients
     Route::resource('clients', ClientController::class);
 
-    // Contact management
+    // Contact
     Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact_us.index');
     Route::get('contact-us/create', [ContactUsController::class, 'create'])->name('contact_us.create');
     Route::get('contact-us/{contactUs}', [ContactUsController::class, 'show'])->name('contact_us.show');
     Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
-    Route::delete('contact-us/{contactUs}', [ContactUsController::class, 'destroy'])->name('contact_us.destroy');
+    Route::delete('/contact-us/{contactUs}', [ContactUsController::class, 'destroy'])->name('contact_us.destroy'); 
 });
