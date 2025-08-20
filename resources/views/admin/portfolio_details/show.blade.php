@@ -7,6 +7,9 @@
     <h1>{{ $portfolio_detail->title }}</h1>
     <h4 class="text-muted">{{ $portfolio_detail->subtitle }}</h4>
 
+    <!-- Show Category -->
+    <p><strong>Category:</strong> {{ $portfolio_detail->category->category_name ?? '-' }}</p>
+
     @if($portfolio_detail->image)
         <img src="{{ asset('storage/' . $portfolio_detail->image) }}" alt="{{ $portfolio_detail->title }}" class="img-fluid mb-4" style="max-width: 600px;">
     @endif

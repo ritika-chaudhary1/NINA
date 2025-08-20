@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PortfolioDetail;
+use App\Models\PortfolioCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,24 +16,30 @@ class PortfolioDetailController extends Controller
     }
 
     public function create()
-    {
-        return view('admin.portfolio_details.create');
-    }
+{
+    $categories = PortfolioCategory::all();
+    return view('admin.portfolio_details.create', compact('categories'));
+}
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title'       => 'required|string|max:255',
-            'subtitle'    => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+    'title'       => 'required|string|max:255',
+    'subtitle'    => 'nullable|string|max:255',
+    'description' => 'nullable|string',
+    'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    'portfolio_category_id' => 'nullable|exists:portfolio_categories,id',
+    'client'      => 'nullable|string|max:255',
+    'location'    => 'nullable|string|max:255',
+]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('portfolio_images', 'public');
-        }
+// Store image if uploaded
+if ($request->hasFile('image')) {
+    $validated['image'] = $request->file('image')->store('portfolio_images', 'public');
+}
 
-        PortfolioDetail::create($validated);
+PortfolioDetail::create($validated);
+
 
         return redirect()->route('admin.portfolio_details.index')->with('success', 'Portfolio detail created successfully.');
     }
@@ -43,25 +50,27 @@ class PortfolioDetailController extends Controller
     }
 
     public function edit(PortfolioDetail $portfolio_detail)
-    {
-        return view('admin.portfolio_details.edit', compact('portfolio_detail'));
-    }
+{
+    $categories = PortfolioCategory::all();
+    return view('admin.portfolio_details.edit', compact('portfolio_detail', 'categories'));
+}
 
     public function update(Request $request, PortfolioDetail $portfolio_detail)
     {
         $validated = $request->validate([
-            'title'       => 'required|string|max:255',
-            'subtitle'    => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+    'title'       => 'required|string|max:255',
+    'subtitle'    => 'nullable|string|max:255',
+    'description' => 'nullable|string',
+    'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    'portfolio_category_id' => 'nullable|exists:portfolio_categories,id',
+    'client'      => 'nullable|string|max:255',
+    'location'    => 'nullable|string|max:255',
+]);
 
-        if ($request->hasFile('image')) {
-            if ($portfolio_detail->image) {
-                Storage::disk('public')->delete($portfolio_detail->image);
-            }
-            $validated['image'] = $request->file('image')->store('portfolio_images', 'public');
-        }
+// Store image if uploaded
+if ($request->hasFile('image')) {
+    $validated['image'] = $request->file('image')->store('portfolio_images', 'public');
+}
 
         $portfolio_detail->update($validated);
 

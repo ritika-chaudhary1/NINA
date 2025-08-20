@@ -28,12 +28,12 @@
     <select name="category" id="category" class="form-select" required>
         <option value="">-- Select Category --</option>
         @foreach($categories as $category)
-            <option value="{{ $category->name }}"
-                @if( (isset($selectedCategory) && $selectedCategory == $category->name) 
-                     || old('category') == $category->name )
+            <option value="{{ $category->category }}"
+                @if( (isset($selectedCategory) && $selectedCategory == $category->category) 
+                     || old('category') == $category->category )
                     selected
                 @endif
-            >{{ $category->name }}</option>
+            >{{ $category->category }}</option>
         @endforeach
     </select>
     <small class="form-text text-muted">Select a category.</small>

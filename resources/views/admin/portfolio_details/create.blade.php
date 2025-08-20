@@ -26,8 +26,29 @@
         </div>
 
         <div class="mb-3">
+    <label for="portfolio_category_id">Category</label>
+    <select name="portfolio_category_id" id="portfolio_category_id" class="form-control" required>
+        <option value="">Select Category</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+        @endforeach
+    </select>
+</div>
+
+
+        <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea id="description" name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="client" class="form-label">Client</label>
+            <input type="text" id="client" name="client" class="form-control" value="{{ old('client') }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" name="location" class="form-control" value="{{ old('location') }}">
         </div>
 
         <div class="mb-3">

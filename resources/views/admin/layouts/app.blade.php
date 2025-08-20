@@ -10,91 +10,124 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      overflow-x: hidden;
-    }
-    #sidebar {
-      width: 250px;
-      min-height: 100vh;
-      background: #343a40;
-      color: white;
-      transition: width 0.3s ease;
-      overflow-x: hidden;
-    }
-    #sidebar.collapsed {
-      width: 70px; /* narrow width to show icons only */
-    }
-    #sidebar .nav-link {
-      color: #ddd;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: flex;
-      align-items: center;
-    }
-    #sidebar.collapsed .nav-link span.menu-text {
-      display: none; /* hide menu text when collapsed */
-    }
-    #sidebar .nav-link:hover, #sidebar .nav-link.active {
-      background: #495057;
-      color: white;
-    }
-    #sidebar .nav-link i {
-      width: 25px; /* fixed icon width */
-      min-width: 25px;
-      text-align: center;
-      margin-right: 10px;
-      font-size: 18px;
-    }
-    #sidebar.collapsed .nav-link i {
-      margin-right: 0;
-      font-size: 20px;
-    }
-    #sidebar .collapse-inner {
-      padding-left: 35px;
-    }
-    #sidebar.collapsed .collapse-inner {
-      display: none; /* hide submenu text when collapsed */
-    }
+  overflow-x: hidden;
+}
 
-    #content {
-      transition: margin-left 0.3s ease;
-      margin-left: 250px;
-      padding: 20px;
-      flex-grow: 1;
-    }
-    #content.expanded {
-      margin-left: 70px;
-    }
+/* Sidebar */
+#sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #ffffff; /* white background */
+  color: #212529; /* off-black text */
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  border-right: 1px solid #ddd;
+}
 
-    /* Navbar adjustments */
-    nav.navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1030;
-      padding: 0 1rem;
-      height: 56px;
-    }
-    #sidebarToggle {
-      order: 1; /* first */
-    }
-    .navbar-brand {
-      order: 2; /* second */
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: white;
-      text-decoration: none;
-    }
-    /* To keep right side empty or add user menu later */
-    .navbar-placeholder {
-      order: 3;
-      width: 40px; /* same width as toggle btn for symmetry */
-    }
+#sidebar.collapsed {
+  width: 70px;
+}
+
+#sidebar .nav-link {
+  color: #212529; /* off-black text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+#sidebar.collapsed .nav-link span.menu-text {
+  display: none;
+}
+
+#sidebar .nav-link:hover,
+#sidebar .nav-link.active {
+  background: #f1f1f1; /* light gray hover */
+  color: #000000; /* darker black text */
+}
+
+/* #sidebar .nav-link i {
+  width: 25px;
+  min-width: 25px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 18px;
+  color: #212529;
+} */
+
+#sidebar .nav-link i {
+  color: transparent; /* removes solid fill */
+  -webkit-text-stroke: 1px #000; /* black outline */
+  font-size: 18px;
+  margin-right: 10px;
+  min-width: 25px;
+  text-align: center;
+}
+
+
+#sidebar.collapsed .nav-link i {
+  margin-right: 0;
+  font-size: 20px;
+}
+
+#sidebar .collapse-inner {
+  padding-left: 35px;
+}
+
+#sidebar.collapsed .collapse-inner {
+  display: none;
+}
+
+/* Content */
+#content {
+  transition: margin-left 0.3s ease;
+  margin-left: 250px;
+  padding: 20px;
+  flex-grow: 1;
+}
+#content.expanded {
+  margin-left: 70px;
+}
+
+/* Navbar */
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  padding: 0 1rem;
+  height: 56px;
+  background: #ffffff !important; /* white navbar */
+  border-bottom: 1px solid #ddd;
+}
+
+nav.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #212529 !important; /* off-black */
+  text-decoration: none;
+}
+
+nav.navbar .btn-outline-light {
+  border-color: #212529;
+  color: #212529;
+}
+nav.navbar .btn-outline-light:hover {
+  background: #f1f1f1;
+  color: #000;
+}
+
+.dropdown-menu {
+  border: 1px solid #ddd;
+}
+.dropdown-item:hover {
+  background: #f1f1f1;
+  color: #000;
+}
   </style>
 </head>
 <body>
@@ -158,7 +191,7 @@
       </a>
       <div class="collapse collapse-inner ps-4" id="portfolioSubmenu">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link" href="{{ route('admin.portfolio.index')}}">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.portfolio_details.create')}}">Create New Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.portfolio_details.index')}}">Portfolio Details</a></li>
         </ul>
       </div>
@@ -192,7 +225,7 @@
           <div class="collapse collapse-inner ps-4" id="blogsSubmenu">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.blogs.index') }}">All Blogs</a>
+                <a class="nav-link" href="{{ route('admin.blogs_details.create') }}">Create New Blogs</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.blogs_details.index')}}">Blog Details</a>
@@ -215,6 +248,20 @@
             </ul>
           </div>
         </li>
+
+        <li class="nav-item">
+  <a class="nav-link" href="#clientsSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="clientsSubmenu">
+    <i class="fas fa-users"></i>
+    <span class="menu-text">Clients</span>
+    <i class="fas fa-caret-down ms-auto"></i>
+  </a>
+  <div class="collapse collapse-inner ps-4" id="clientsSubmenu">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="{{ route('admin.clients.create') }}">Add New Client</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ route('admin.clients.index') }}">All Clients</a></li>
+    </ul>
+  </div>
+</li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.contact_us.index') }}">

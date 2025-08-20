@@ -5,8 +5,6 @@
 @section('content')
 <div class="container mt-5">
     <h2>Contact Messages</h2>
-    <a href="{{ route('admin.contact_us.create') }}" class="btn btn-primary mb-3">Create New Contact</a>
-
     @if($messages->count())
     <table class="table table-bordered">
         <thead>

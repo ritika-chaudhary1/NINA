@@ -4,19 +4,26 @@
 
 
  <!-- Hero Section -->
-        <section class="hero-section mb-2 rounded-bottom-3">
+        <section class="hero-section rounded-bottom-3">
             <div class="container">
                 <div class="row text-center text-white">
                     <h1>Services Details</h1>
                     <p>
                         <a href="{{ url('/') }}">Home</a> /
+<<<<<<< HEAD:resources/views/service/index.blade.php
+                        <a href="{{ route('service_detail.index') }}">Services All</a>
+=======
                         <a href="{{ route('service_all.index') }}">Services All</a>
+>>>>>>> origin:resources/views/service_all/index.blade.php
                     </p>
                 </div>
             </div>
         </section>
 
     <!-- Services Section -->
+<<<<<<< HEAD:resources/views/service/index.blade.php
+    <section class="services-section py-5 rounded-3">
+=======
    <section class="services-section py-5 mt-3 mb-2 rounded-3">
             <div class="container px-5">
                 <h6 class="section-heading text-center">TOP FEATURES</h6>
@@ -49,6 +56,7 @@
 
 
     {{-- <section class="services-section py-5 mt-3 mb-2 rounded-3">
+>>>>>>> origin:resources/views/service_all/index.blade.php
         <div class="container px-5">
             <h6 class="section-heading text-center">TOP FEATURES</h6>
             <h2 class="section-title text-black text-center">
