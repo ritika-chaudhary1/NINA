@@ -15,4 +15,9 @@ class ServiceDetail extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function serviceCategories()
+    {
+        return $this->belongsToMany(ServiceCategory::class, 'service_service_category');
+    }
 }

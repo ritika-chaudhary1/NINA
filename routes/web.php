@@ -29,29 +29,7 @@ use App\Http\Controllers\AdminServiceCategoryController;
 */
 
 // Services page
-Route::get('/service', function () {
-    return view('service.index');
-})->name('service.index');
-
-Route::get('/service-detail', function () {
-    return view('service_detail.index');
-})->name('service_detail.index');
-
-// Route::get('/portfolios', function () {
-//     return view('portfolios.index');
-// })->name('portfolios.index');
-
-// Route::get('/portfolio_detail', function () {
-//     return view('portfolio_detail.index');
-// })->name('portfolio_detail.index');
-
-// Route::get('/blog', function () {
-//     return view('blog.index');
-// })->name('blog.index');
-
-// Route::get('/blog_detail', function () {
-//     return view('blog_detail.index');
-// })->name('blog_detail.index');
+Route::get('/service', [ServiceController::class, 'frontendIndex'])->name('service.index');
 
 Route::get('/contacts_us', function () {
     return view('contacts_us.index');
@@ -62,7 +40,9 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [HomeController::class, 'blogList'])->name('blog.index');
 Route::get('/blog_detail/{id?}', [HomeController::class, 'blogDetail'])->name('blog_detail.index');
 Route::get('/portfolios', [HomeController::class, 'portfolioList'])->name('portfolios.index');
-Route::get('/portfolio_detail', [HomeController::class, 'portfolioDetail'])->name('portfolio_detail.index');
+Route::get('/portfolio_detail/{portfolio_detail}', [HomeController::class, 'portfolioDetail'])->name('portfolio_detail.index');
+Route::get('/service_detail/{service}', [HomeController::class, 'serviceDetail'])->name('service_detail.index');
+
 
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
 

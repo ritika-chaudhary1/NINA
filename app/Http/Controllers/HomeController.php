@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\ContactUs;
 use App\Models\BlogCategory;
 use App\Models\BlogDetail;
+use App\Models\ServiceDetail;
 use App\Models\PortfolioDetail;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -55,10 +56,20 @@ public function portfolioList()
     return view('portfolios.index', compact('portfolio_details'));
 }
 
-public function portfolioDetail()
+public function portfolioDetail(PortfolioDetail $portfolio_detail)
 {
-    $portfolio_details = PortfolioDetail::latest()->paginate(10);
-    return view('portfolio_detail.index', compact('portfolio_details'));
+    return view('portfolio_detail.index', compact('portfolio_detail'));
+}
+
+public function serviceDetail(Service $service)
+{
+    $service->load(['details', 'serviceCategories']);
+
+    $serviceDetails = ServiceDetail::where('service_id', $service->id)
+            ->orderBy('order')
+            ->get();
+
+    return view('service_detail.index', compact('service', 'serviceDetails'));
 }
     
 }

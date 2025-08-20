@@ -19,9 +19,9 @@
             <th>Category</th> <!-- New Column -->
             <th>Image</th>
             <th>Description</th>
-            <th>Actions</th>
                <th>Client</th>
                <th>Location</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
