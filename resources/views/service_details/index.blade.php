@@ -6,9 +6,10 @@
         <div class="container">
             <div class="row text-center text-white">
                 <h1>{{ $service->title }} - Service Details</h1>
+                
                 <p>
                     <a href="{{ url('/') }}">Home</a> /
-                    <a href="{{ route('service_all.index') }}">Services All</a> /
+                    <a href="{{ route('service_all.index') }}">Services All</a> 
                     <span>{{ $service->title }}</span>
                 </p>
             </div>

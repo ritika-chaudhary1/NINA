@@ -7,7 +7,7 @@
         <section class="hero-section mb-2 rounded-bottom-3">
             <div class="container">
                 <div class="row text-center text-white">
-                    <h1>Services Details</h1>
+                    <h1>Services All</h1>
                     <p>
                         <a href="{{ url('/') }}">Home</a> /
                         <a href="{{ route('service_all.index') }}">Services All</a>
