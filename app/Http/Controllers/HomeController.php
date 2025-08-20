@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Blog;
 use App\Models\BlogDetail;
 use App\Models\ContactUs;
 use App\Models\BlogCategory;
@@ -16,6 +17,7 @@ class HomeController extends Controller
     {
         $service = Service::all();
         $blogs_details = BlogDetail::latest()->get();
+
         $contactus = ContactUs::all();
     $portfolio_details = PortfolioDetail::latest()->take(6)->get();
     $clients = Client::latest()->get(); 

@@ -1,92 +1,87 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Models\Service;
 
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-     // Display a listing of all services
+    // Display all services
     public function index()
     {
-        $services = Service::latest()->paginate(10);
-        
+        $services = Service::with('serviceCategories')->latest()->paginate(10);
         return view('admin.services.index', compact('services'));
-  
+    }
 
-    // $services = Service::with('categories')->latest()->paginate(10);
-    
-    //      dd($services);
-    // return view('admin.services.index', compact('services'));
-}
-
-    
-
-    // Show the form for creating a new service
+    // Show form to create a new service
     public function create()
     {
-        return view('admin.services.create');
+        $serviceCategories = ServiceCategory::where('status', true)->get();
+        return view('admin.services.create', compact('serviceCategories'));
     }
 
-    // Store a newly created service in storage
+    // Store new service
     public function store(Request $request)
     {
-       
-
         $request->validate([
             'title' => 'required|string|max:255',
-        //    'category' => 'required|string|max:255',
-            'icon' => 'nullable|string|max:255',
+            'service_categories' => 'required|array',
+            'service_categories.*' => 'exists:service_categories,id',
         ]);
 
-        Service::create($request->only('title', 'icon'));
+        $service = Service::create($request->only('title'));
 
+        // Attach selected service categories
+        $service->serviceCategories()->sync($request->service_categories);
 
         return redirect()->route('admin.services.index')
-            ->with('success', 'Service created successfully.');
+                         ->with('success', 'Service created successfully.');
     }
-      //for show
-      
-   public function show($id)
-{
-    $service = Service::with('details')->findOrFail($id);
-    return view('admin.services.show', compact('service'));
-}
 
-
-    // Show the form for editing the specified service
+    // Show form to edit service
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
-        return view('admin.services.edit', compact('service'));
+        $service = Service::with('serviceCategories')->findOrFail($id);
+        $serviceCategories = ServiceCategory::where('status', true)->get();
+        return view('admin.services.edit', compact('service', 'serviceCategories'));
     }
 
-    // Update the specified service in storage
+    // Update existing service
     public function update(Request $request, $id)
     {
         $service = Service::findOrFail($id);
 
         $request->validate([
             'title' => 'required|string|max:255',
-        //    'category' => 'required|string|max:255',
-
-            'icon' => 'nullable|string|max:255',
+            'service_categories' => 'required|array',
+            'service_categories.*' => 'exists:service_categories,id',
         ]);
 
-        $service->update($request->only('title',  'icon'));
+        $service->update($request->only('title'));
+
+        // Update service categories
+        $service->serviceCategories()->sync($request->service_categories);
 
         return redirect()->route('admin.services.index')
-            ->with('success', 'Service updated successfully.');
+                         ->with('success', 'Service updated successfully.');
     }
 
-    // Remove the specified service from storage
+    // Delete a service
     public function destroy($id)
     {
         $service = Service::findOrFail($id);
+        $service->serviceCategories()->detach(); // Remove pivot table relations
         $service->delete();
 
         return redirect()->route('admin.services.index')
-            ->with('success', 'Service deleted successfully.');
+                         ->with('success', 'Service deleted successfully.');
+    }
+
+    // Show a single service (optional)
+    public function show($id)
+    {
+        $service = Service::with('serviceCategories')->findOrFail($id);
+        return view('admin.services.show', compact('service'));
     }
 }
