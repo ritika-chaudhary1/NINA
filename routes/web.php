@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuthController;
@@ -25,46 +27,68 @@ use App\Http\Controllers\BlogCategoryController;
 |--------------------------------------------------------------------------
 */
 
-// Home
-Route::get('/', [HomeController::class, 'home'])->name('home');
-
 // Services page
-Route::get('/service-all', function () {
-    return view('service_all.index');
-})->name('service_all.index');
+Route::get('/service', function () {
+    return view('service.index');
+})->name('service.index');
 
-Route::get('/service-details', function () {
-    return view('service_details.index');
-})->name('service_details.index');
+Route::get('/service-detail', function () {
+    return view('service_detail.index');
+})->name('service_detail.index');
 
-Route::get('/portfolio', function () {
-    return view('portfolio.index');
-})->name('portfolio.index');
+// Route::get('/portfolios', function () {
+//     return view('portfolios.index');
+// })->name('portfolios.index');
 
-Route::get('/blogs', function () {
-    return view('blogs.index');
-})->name('blogs.index');
+Route::get('/portfolio_detail', function () {
+    return view('portfolio_detail.index');
+})->name('portfolio_detail.index');
 
-// Route::get('/blogs.index', [BlogController::class, 'index'])->name('blogs.index');
+// Route::get('/blog', function () {
+//     return view('blog.index');
+// })->name('blog.index');
+Route::get('/blog', [HomeController::class, 'blogList'])->name('blog.index');
+Route::get('/blog_detail/{id?}', [HomeController::class, 'blogDetail'])->name('blog_detail.index');
 
-Route::get('/blogs_details', function () {
-    return view('blogs_details.index');
-})->name('blogs_details.index');
+// Route::get('/blog_detail', function () {
+//     return view('blog_detail.index');
+// })->name('blog_detail.index');
+
+Route::get('/contacts_us', function () {
+    return view('contacts_us.index');
+})->name('contacts_us.index');
+
+//HomeController Routes
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/blog', [HomeController::class, 'blogList'])->name('blog.index');
+Route::get('/blog_detail/{id?}', [HomeController::class, 'blogDetail'])->name('blog_detail.index');
+Route::get('/portfolios', [HomeController::class, 'portfolioList'])->name('portfolios.index');
+Route::get('/portfolio_detail', [HomeController::class, 'portfolioDetail'])->name('portfolio_detail.index');
+
+Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
 
 // Portfolio page
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 
 // Clients and Pricing pages
-Route::view('/clients', 'clients')->name('clients');
+// Route::view('/clients', 'clients')->name('clients');
 Route::view('/pricing', 'pricing')->name('pricing');
 
 // Blogs
-Route::get('/blogs', [FrontendBlogDetailController::class, 'index'])->name('blogs.index');
-Route::get('/blogs/{id}', [FrontendBlogDetailController::class, 'show'])->name('blogs.show');
+// Route::get('/blog_detail/{id}', [FrontendBlogDetailController::class, 'show'])->name('blog_detail.show');
 
 // Contact page
 Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact-submit', [ContactMessageController::class, 'store'])->name('contact.submit');
+
+// Blog Detail
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog_detail.show');
+
+Route::get('/blogs', function () {
+    $blogs_details = Blog::latest()->get();
+    return view('blogs.index', compact('blogs_details'));
+})->name('blogs.index');
 
 
 /*
@@ -101,11 +125,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('profile', function () { $admin = Auth::user(); return view('admin.profile', compact('admin')); })->name('profile');
     Route::post('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
-    //Categories
+    // Blog Categories
     Route::resource('blog_categories', BlogCategoryController::class);
-    Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('blog_categories',BlogCategoryController::class);
-});
 
     // Blogs
     Route::resource('blogs', BlogController::class);
@@ -115,13 +136,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::resource('services', ServiceController::class);
     Route::resource('service-details', ServiceDetailController::class);
 
-    // Categories
-    Route::resource('categories', AdminCategoryController::class);
-
     // Portfolio
     Route::resource('portfolio_categories', PortfolioCategoryController::class);
-    Route::resource('portfolio', PortfolioController::class);
     Route::resource('portfolio_details', PortfolioDetailController::class);
+
+    // Clients ✅ define here directly
+    Route::resource('clients', ClientController::class);
 
     // Contact
     Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact_us.index');
@@ -129,5 +149,4 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('contact-us/{contactUs}', [ContactUsController::class, 'show'])->name('contact_us.show');
     Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
     Route::delete('/contact-us/{contactUs}', [ContactUsController::class, 'destroy'])->name('contact_us.destroy'); 
-
 });

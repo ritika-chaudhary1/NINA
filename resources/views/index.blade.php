@@ -2,12 +2,12 @@
 
     @section('content')
         <!-- Hero Section -->
-        <section class="hero-section mb-2 rounded-bottom-3">
+        <section class="hero-section rounded-bottom-3">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <h3 class="hero-text text-white">HELLO,<span class="text-danger"> I AM</span></h3>
-                        <h1 class="hero-title">Nina <span class="text-danger"> Simone</span></h1>
+                        <h1 class="hero-title">Shahbaz <span class="text-danger"> Ali</span></h1>
                         <h3 class="hero-text text-white">I AM <span class="fst-italic">WordPress Developer</span></h3>
                         <p class="hero-text">
                             I'm a Web developer & I'm very passionate and dedicated to my work. I have acquired the skills
@@ -44,7 +44,7 @@
 
 
         <!-- Services Section -->
-        <section class="services-section py-5 mt-3 mb-2 rounded-3">
+        <section class="services-section py-5 rounded-3">
             <div class="container px-5">
                 <h6 class="section-heading text-center">TOP FEATURES</h6>
                 <h2 class="section-title text-black text-center">What <span class="text-danger">Services</span> I Provide To
@@ -77,87 +77,38 @@
 
 
         <!-- Projects Section -->
-        <section class="projects-section py-5 bg-light mt-3 mb-2 rounded-3">
-            <div class="container">
-                <h6 class="section-heading text-center">MY PROJECT</h6>
-                <h2 class="section-title text-black text-center">My Recent <span class="text-danger">Projects</span></h2>
+<section class="projects-section py-5 bg-light rounded-3">
+    <div class="container">
+        <h6 class="section-heading text-center">MY PROJECT</h6>
+        <h2 class="section-title text-black text-center">My Recent <span class="text-danger">Projects</span></h2>
 
-                <div class="row">
-                    <!-- Project 1 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="Mobile App Design" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>Mobile App Design</h3>
-                                <p>App Design</p>
-                            </div>
-                        </div>
+        <div class="row">
+            @foreach($portfolio_details as $detail)
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    @if($detail->image)
+                        <img src="{{ asset('storage/' . $detail->image) }}" alt="{{ $detail->title }}" class="img-fluid">
+                    @else
+                        <img src="{{ asset('images/project-image.jpg') }}" alt="{{ $detail->title }}" class="img-fluid">
+                    @endif
+                    <div class="project-overlay">
+                        <h3>{{ $detail->title }}</h3>
+                        <p>{{ $detail->subtitle ?? 'Portfolio' }}</p>
                     </div>
-
-                    <!-- Project 2 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="Product Design" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>Product Design</h3>
-                                <p>Online Product Design</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="Branding Design" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>Branding Design</h3>
-                                <p>Digital Agency Branding</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="App Landing Page" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>App Landing Page</h3>
-                                <p>Design</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="Mobile App" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>Mobile App</h3>
-                                <p>App Design</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 6 -->
-                    <div class="col-md-4">
-                        <div class="project-card">
-                            <img src="{{ asset('images/project-image.jpg') }}" alt="Apps Design" class="img-fluid">
-                            <div class="project-overlay">
-                                <h3>Apps Design</h3>
-                                <p>Mobile Application Design</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-danger">See More Works</button>
                 </div>
             </div>
-        </section>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ route('portfolio.index') }}" class="btn btn-outline-danger">See More Works</a>
+        </div>
+    </div>
+</section>
+
 
         <!-- About Section -->
-        <section class="about-section py-5 mt-3 mb-2 rounded-3">
+        <section class="about-section py-5 rounded-3">
             <div class="container">
                 <h6 class="section-heading text-center">I AM A WORDPRESS DEVELOPER</h6>
                 <h2 class="section-title text-black text-center">I Develop <span class="text-danger">Skills</span>
@@ -236,7 +187,7 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="testimonials-section py-5 bg-light mt-3 mb-2 rounded-3">
+        <section class="testimonials-section py-5 bg-light rounded-3">
             <div class="container">
 
                 <h6 class="section-heading text-center">TESTINOMIALS</h6>
@@ -282,37 +233,31 @@
             </div>
         </section>
 
-        <!-- Clients section -->
-        <section class="clients-section text-center bg-black py-5 mt-3 mb-2 rounded-3">
-            <h6 class="section-heading text-center">POPULAR CLIENTS</h6>
-            <h2 class="section-title text-white text-center pt-3 mb-5">Awesome <span class="text-danger">Clients</span>
-            </h2>
+       <!-- Clients section -->
+<section class="clients-section text-center bg-black py-5 rounded-3" id="clients">
+    <h6 class="section-heading text-center">POPULAR CLIENTS</h6>
+    <h2 class="section-title text-white text-center pt-3 mb-5">Awesome <span class="text-danger">Clients</span></h2>
 
-
-
-            <div class="container-fluid ">
-                <div class="container border-top border-bottom border-dark mb-4">
-                    <div class="container d-flex justify-content-center gap-md-4 overflow-x-hidden">
-                        <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">amazon
-                        </div>
-                        <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">slack
-                        </div>
-                        <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">Google
-                        </div>
-                        <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">Linkedin
-                        </div>
-                        <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">Walmart
-                        </div>
-
+    <div class="container-fluid">
+        <div class="container border-top border-bottom border-dark mb-4">
+            <div class="container d-flex justify-content-center gap-md-4 overflow-x-auto">
+                @foreach($clients as $client)
+                    <div class="clients-brand text-white py-5 px-5 fs-4 fw-bold border border-dark rounded-3">
+                        @if($client->logo)
+                            <img src="{{ asset('storage/' . $client->logo) }}" 
+                                 alt="{{ $client->name }}" 
+                                 style="max-height: 50px;">
+                        @endif
                     </div>
-                </div>
-
+                @endforeach
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
 
         <!-- Pricing Section -->
-        <section class="pricing-section py-5 mt-3 mb-2 rounded-3">
+        {{-- <section class="pricing-section py-5 mt-3 mb-2 rounded-3">
             <div class="container">
                 <h6 class="section-heading text-center">CHOOSE YOUR PLAN</h6>
                 <h2 class="section-title text-black text-center mb-5">The Best <span class="text-danger">Pricing</span>
@@ -372,10 +317,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <!-- Blog Section -->
-        <section class="blog-section py-5 mt-3 mb-2 rounded-3">
+        {{-- <section class="blog-section py-5 mt-3 mb-2 rounded-3">
             <div class="container">
                 <h6 class="section-heading text-center">LATEST BLOG</h6>
                 <h2 class="section-title text-black text-center mb-5">Visit <span class="text-danger">My Blog</span> And
@@ -399,7 +344,7 @@
     @endif
   </div>
 </div>
-@endforeach
+@endforeach --}}
 
 
                 {{-- <div class="row align-items-center mx-5 border-top border-secondary p-3">

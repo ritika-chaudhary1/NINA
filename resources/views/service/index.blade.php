@@ -4,20 +4,20 @@
 
 
  <!-- Hero Section -->
-        <section class="hero-section mb-2 rounded-bottom-3">
+        <section class="hero-section rounded-bottom-3">
             <div class="container">
                 <div class="row text-center text-white">
                     <h1>Services Details</h1>
                     <p>
                         <a href="{{ url('/') }}">Home</a> /
-                        <a href="{{ url('service-details.index') }}">Services All</a>
+                        <a href="{{ route('service_detail.index') }}">Services All</a>
                     </p>
                 </div>
             </div>
         </section>
 
     <!-- Services Section -->
-    <section class="services-section py-5 mt-3 mb-2 rounded-3">
+    <section class="services-section py-5 rounded-3">
         <div class="container px-5">
             <h6 class="section-heading text-center">TOP FEATURES</h6>
             <h2 class="section-title text-black text-center">
