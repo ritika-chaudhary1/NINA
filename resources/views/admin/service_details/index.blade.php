@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Service Details</h2>
-        <a href="{{ route('admin.service_details.create') }}" class="btn btn-primary">➕ Add Service Detail</a>
+    <a href="{{ route('admin.service_details.create') }}" class="btn btn-primary mb-3">Create New Service Detail</a>
     </div>
 
     @if(session('success'))

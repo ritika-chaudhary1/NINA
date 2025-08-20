@@ -1,5 +1,5 @@
 <!-- Contact Section -->
-    <section class="contact-section bg-black py-5 rounded-bottom-3">
+    <section class="contact-section bg-black py-5 rounded-bottom-3 mt-1">
         {{-- <div class="container bg-black py-5"> --}}
 
             @if(session('success'))

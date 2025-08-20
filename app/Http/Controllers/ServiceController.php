@@ -84,4 +84,13 @@ class ServiceController extends Controller
         $service = Service::with('serviceCategories')->findOrFail($id);
         return view('admin.services.show', compact('service'));
     }
+
+
+    // App\Http\Controllers\ServiceController.php
+public function frontendIndex()
+{
+    $services = Service::with('serviceCategories')->latest()->get();
+    return view('service.index', compact('services'));
+}
+
 }

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\BlogDetail;
 use App\Models\BlogCategory;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,6 +13,7 @@ class BlogDetailController extends Controller
     {
         // dd('This is the blog detail index method. You can customize it as needed.');
         $blogs = BlogDetail::latest()->paginate(10);
+
         return view('admin.blogs_details.index', compact('blogs'));
     }
 
@@ -48,7 +49,7 @@ class BlogDetailController extends Controller
             $validated['categories'] = null;
         }
 
-        BlogDetails::create($validated);
+        BlogDetail::create($validated);
 
         return redirect()->route('admin.blogs_details.index')->with('success', 'Blog created successfully!');
     }

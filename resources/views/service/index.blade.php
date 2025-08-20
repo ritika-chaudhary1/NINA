@@ -2,133 +2,54 @@
 
 @section('content')
 
+<!-- Hero Section -->
+<section class="hero-section rounded-bottom-3 py-5 bg-dark text-white">
+    <div class="container text-center">
+        <h1 class="mb-2">All Services</h1>
+        <p>
+            <a href="{{ url('/') }}" class="text-white text-decoration-none">Home</a> /
+            <span>Services</span>
+        </p>
+    </div>
+</section>
 
- <!-- Hero Section -->
-        <section class="hero-section rounded-bottom-3">
-            <div class="container">
-                <div class="row text-center text-white">
-                    <h1>Services Details</h1>
-                    <p>
-                        <a href="{{ url('/') }}">Home</a> 
-                        <a href="{{ route('service_all.index') }}">Services All</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+<!-- Services Section -->
+<section class="services-section py-5 mt-4 rounded-3">
+    <div class="container px-5">
+        <h6 class="section-heading text-center">TOP FEATURES</h6>
+        <h2 class="section-title text-black text-center mb-5">
+            What <span class="text-danger">Services</span> I Provide To My Clients
+        </h2>
 
-    <!-- Services Section -->
-   <section class="services-section py-5 mt-3 mb-2 rounded-3">
-            <div class="container px-5">
-                <h6 class="section-heading text-center">TOP FEATURES</h6>
-                <h2 class="section-title text-black text-center">What <span class="text-danger">Services</span> I Provide To
-                    My Clients In Here</h2>
-
-                <!-- first -->
-                @foreach($services as $service)
-                <div class="row py-3 border-top border-bottom border-secondary">
-                    <div class="col-12 col-lg-4">
-                        <a class="text-black fw-bold text-decoration-none fs-4" href="{{ route('service_details.show', $service->id) }}">{{ $service->title }}</a>
+        @if(isset($services) && $services->count() > 0)
+            @foreach($services as $service)
+                <div class="row py-3 border-top border-bottom border-secondary align-items-center">
+                    <!-- Service Title -->
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="{{ route('service_detail.index', $service) }}" 
+                           class="text-black fw-bold text-decoration-none fs-4">
+                           {{ $service->title }}
+                        </a>
                     </div>
+
+                    <!-- Service Categories -->
                     <div class="col-12 col-lg-8">
-                        @foreach($service->serviceCategories as $category)
-                            <span class="text-start d-none d-sm-inline-block px-3 py-1 border border-secondary rounded-pill">
-                                {{ $category->name }}
-                            </span>
-                        @endforeach
+                        @if($service->serviceCategories->count() > 0)
+                            @foreach($service->serviceCategories as $category)
+                                <span class="d-inline-block px-3 py-1 me-2 mb-2 border border-secondary rounded-pill">
+                                    {{ $category->name }}
+                                </span>
+                            @endforeach
+                        @else
+                            <span class="text-muted">No categories assigned</span>
+                        @endif
                     </div>
                 </div>
-                @endforeach
-
-                 
-         
-
-            </div>
-        </section>
+            @endforeach
+        @else
+            <p class="text-center fs-5 text-muted">No services available at the moment.</p>
+        @endif
+    </div>
+</section>
 
 @endsection
-
-
-    {{-- <section class="services-section py-5 mt-3 mb-2 rounded-3">
->>>>>>> origin:resources/views/service_all/index.blade.php
-        <div class="container px-5">
-            <h6 class="section-heading text-center">TOP FEATURES</h6>
-            <h2 class="section-title text-black text-center">
-                What <span class="text-danger">Services</span> I Provide To My Clients In Here
-            </h2>
-            
-            <!-- first -->
-            <div class="row py-3 border-top border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Web Development</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-5">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">WordPress</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Brand</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Laravel</span>
-                </div>
-            </div>
-
-            <!-- second -->
-            <div class="row py-3 border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Application Design</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-3">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">UI/UX Design</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Landing</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Mobile &amp; Web App</span>
-                </div>
-            </div>
-
-            <!-- third -->
-            <div class="row py-3 border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Brand Identity</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-3">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Stationery</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Brand Design</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Card Design</span>
-                </div>
-            </div>
-
-            <!-- fourth -->
-            <div class="row py-3 border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Digital Marketing</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-3">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Social Media</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Youtube</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">SEO Analytics</span>
-                </div>
-            </div>
-
-            <!-- fifth -->
-            <div class="row py-3 border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Graphic Design</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-3">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Mockup Design</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Flyer Design</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Card Design</span>
-                </div>
-            </div>
-
-            <!-- sixth -->
-            <div class="row py-3 border-bottom border-secondary">
-                <div class="col-12 col-lg-4">
-                    <a class="text-black fw-bold fs-4" href="#">Ui/Ux Mobile Design</a>
-                </div>
-                <div class="col-12 col-lg-8 gy-3">
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">UI/UX Design</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Landing</span>
-                    <span class="text-start px-3 py-1 border border-secondary rounded-pill">Mobile &amp; Web App</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    @endsection
-    --}}
