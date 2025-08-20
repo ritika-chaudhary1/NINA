@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Models\BlogDetail;
 use App\Models\ContactUs;
 use App\Models\BlogCategory;
+use App\Models\BlogDetail;
 use App\Models\PortfolioDetail;
 use App\Models\Client;
 use Illuminate\Http\Request;

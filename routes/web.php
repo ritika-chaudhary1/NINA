@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogDetailController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\AdminCategoryController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PortfolioDetailController;
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\AdminServiceCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,15 +41,13 @@ Route::get('/service-detail', function () {
 //     return view('portfolios.index');
 // })->name('portfolios.index');
 
-Route::get('/portfolio_detail', function () {
-    return view('portfolio_detail.index');
-})->name('portfolio_detail.index');
+// Route::get('/portfolio_detail', function () {
+//     return view('portfolio_detail.index');
+// })->name('portfolio_detail.index');
 
 // Route::get('/blog', function () {
 //     return view('blog.index');
 // })->name('blog.index');
-Route::get('/blog', [HomeController::class, 'blogList'])->name('blog.index');
-Route::get('/blog_detail/{id?}', [HomeController::class, 'blogDetail'])->name('blog_detail.index');
 
 // Route::get('/blog_detail', function () {
 //     return view('blog_detail.index');
@@ -79,7 +78,7 @@ Route::view('/pricing', 'pricing')->name('pricing');
 
 // Contact page
 Route::view('/contact', 'contact')->name('contact');
-Route::post('/contact-submit', [ContactMessageController::class, 'store'])->name('contact.submit');
+Route::post('/contact-submit', [ContactUsController::class, 'store'])->name('contact.submit');
 
 // Blog Detail
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
@@ -125,16 +124,21 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('profile', function () { $admin = Auth::user(); return view('admin.profile', compact('admin')); })->name('profile');
     Route::post('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
+
     // Blog Categories
     Route::resource('blog_categories', BlogCategoryController::class);
 
     // Blogs
     Route::resource('blogs', BlogController::class);
     Route::resource('blogs_details', BlogDetailController::class);
+    Route::resource('blog_categories', BlogCategoryController::class);
 
     // Services
+    // Route::get('/get-categories/{service_id}', [ServiceController::class, 'getCategories']); 
+
     Route::resource('services', ServiceController::class);
-    Route::resource('service-details', ServiceDetailController::class);
+    Route::resource('service_details', ServiceDetailController::class);
+    Route::resource('service-categories', AdminServiceCategoryController::class);
 
     // Portfolio
     Route::resource('portfolio_categories', PortfolioCategoryController::class);

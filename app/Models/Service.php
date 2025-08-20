@@ -9,11 +9,10 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','icon'];
+    protected $fillable = ['title'];
 
-    public function details()
+    public function serviceCategories()
     {
-        return $this->hasMany(ServiceDetail::class)->orderBy('order');
+        return $this->belongsToMany(ServiceCategory::class, 'service_service_category');
     }
-  
 }

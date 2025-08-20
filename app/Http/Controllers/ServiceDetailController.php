@@ -22,7 +22,7 @@ class ServiceDetailController extends Controller
             $details = ServiceDetail::orderBy('order')->get();
         }
 
-        return view('service_details.index', compact('details'));
+        return view('admin.service_details.index', compact('details'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ServiceDetailController extends Controller
     public function create()
     {
         $services = Service::all();
-        return view('service_details.create', compact('services'));
+        return view('admin.service_details.create', compact('services'));
     }
 
     /**
@@ -43,6 +43,7 @@ class ServiceDetailController extends Controller
             'service_id' => 'required|exists:services,id',
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
+            'description' => 'nullable|string',
             'image'      => 'nullable|image|max:2048',
             'order'      => 'nullable|integer',
         ]);
@@ -53,7 +54,7 @@ class ServiceDetailController extends Controller
 
         ServiceDetail::create($validated);
 
-        return redirect()->route('service-details.index')->with('success', 'Service detail created successfully.');
+        return redirect()->route('admin.service_details.index')->with('success', 'Service detail created successfully.');
     }
 
     /**
@@ -64,7 +65,7 @@ class ServiceDetailController extends Controller
         $detail = ServiceDetail::findOrFail($id);
         $services = Service::all();
 
-        return view('service_details.edit', compact('detail', 'services'));
+        return view('admin.service_details.edit', compact('detail', 'services'));
     }
 
     /**
@@ -78,6 +79,7 @@ class ServiceDetailController extends Controller
             'service_id' => 'required|exists:services,id',
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
+            'description' => 'nullable|string',
             'image'      => 'nullable|image|max:2048',
             'order'      => 'nullable|integer',
         ]);
@@ -92,7 +94,7 @@ class ServiceDetailController extends Controller
 
         $detail->update($validated);
 
-        return redirect()->route('service-details.index')->with('success', 'Service detail updated successfully.');
+        return redirect()->route('admin.service_details.index')->with('success', 'Service detail updated successfully.');
     }
 
     /**
@@ -108,7 +110,7 @@ class ServiceDetailController extends Controller
 
         $detail->delete();
 
-        return redirect()->route('service-details.index')->with('success', 'Service detail deleted successfully.');
+        return redirect()->route('admin.service_details.index')->with('success', 'Service detail deleted successfully.');
     }
 
     /**
@@ -117,6 +119,6 @@ class ServiceDetailController extends Controller
     public function show($id)
     {
         $detail = ServiceDetail::findOrFail($id);
-        return view('service_details.show', compact('detail'));
+        return view('admin.service_details.show', compact('detail'));
     }
 }

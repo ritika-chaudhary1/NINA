@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-           $table->id();
-           $table->string('title');
-           $table->text('short_description')->nullable();
-           $table->string('icon')->nullable();
-           $table->timestamps();
-    });
-
+        Schema::table('service_details', function (Blueprint $table) {
+            $table->text('description')->nullable()->after('content');
+        });
     }
 
     /**
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('service_details', function (Blueprint $table) {
+            $table->dropColumn('description');
+        });
     }
 };
