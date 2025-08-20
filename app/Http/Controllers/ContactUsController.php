@@ -19,13 +19,8 @@ class ContactUsController extends Controller
     $contact = ContactUs::create($validated);
 
     // Redirect to the show page with a success message
-    return redirect()->route('admin.contact_us.index', $contact->id)->with('success', 'Message sent successfully!');
+    return redirect()->back()->with('success', 'Message sent successfully!');
     }
-
-    public function create()
-{
-    return view('admin.contact_us.create');
-}
 
     // Admin: List all messages
     public function index()
