@@ -12,12 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+{
+    if (Schema::hasColumn('services', 'short_description')) {
         Schema::table('services', function (Blueprint $table) {
             $table->dropColumn('short_description');
-
         });
     }
+}
 
     /**
      * Reverse the migrations.
