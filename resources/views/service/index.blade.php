@@ -7,8 +7,8 @@
     <div class="container text-center">
         <h1 class="mb-2">All Services</h1>
         <p>
-            <a href="{{ url('/') }}" class="text-white text-decoration-none">Home</a> /
-            <span>Services</span>
+            <a href="{{ url('/') }}" class="text-white text-decoration-none">Home</a> 
+       
         </p>
     </div>
 </section>
