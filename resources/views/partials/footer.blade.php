@@ -9,9 +9,29 @@
             <h6 class="section-heading text-center">GET IN TOUCH</h6>
             <h2 class="section-title text-white text-center">Want To <span class="text-danger">Enrich</span> Yourself, Always Connect with Us</h2>
             
-            <div class="row p-3">
-                <div class="col-lg-6">
-                    <form class="contact-form" action="{{ route('contact_us.store') }}" method="POST">
+        <footer class="footer mt-3 bg-black">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="col-md-4 mt-5">
+                <h5 class="mb-4 text-white">Contact Info</h5>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-phone-volume mt-1 text-white"></i>+32 (0) 333 444 555</p>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-location-dot mt-1 text-white"></i>5B Street, City 50987 New Town US</p>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-envelope-circle-check mt-1 text-white"></i>htmlstream@support.com</p>
+
+                {{-- <h5 class="mt-5">Social Networks</h5>
+                <div class="social-icons mt-3">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                </div> --}}
+            </div>
+
+            <!-- Backend Contact Form -->
+            <div class="col-md-8 p-5 border border-secondary">
+                <h3 class="mb-5 text-white">Contact Us</h3>
+                <form class="contact-form" action="{{ route('contact_us.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Your name" required />
@@ -27,22 +47,10 @@
                     </div>
                     <button type="submit" class="btn btn-danger">Send Message</button>
                 </form>
-
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="form-image">
-                        <img src="{{ asset('images/form.jpg') }}" alt="form-image" />
-                    </div>
-                </div>
             </div>
-        {{-- </div> --}}
-
-        <!-- Footer Section -->
-        <div class="container-fluid rounded-top-3">
-        <div class="container text-center py-2">
-             <p class="fs-4 pt-1 text-white fw-bold">nina99@domainname.com / 14 tottenham road, london, england / +1(0) 987654</p>
         </div>
+    </div>
+<div class="container-fluid rounded-top-3">
     </div>
     <div class="scrolling-wrapper border-bottom">
             <div class="scrolling-content d-flex gap-5">
@@ -84,6 +92,9 @@
             </div>
         </div>
     </div>
+</footer>
+    
+        
     </section>
 
 <!-- Bootstrap JS -->
