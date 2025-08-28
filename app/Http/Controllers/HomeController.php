@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use App\Models\BlogDetail;
 use App\Models\ServiceDetail;
 use App\Models\PortfolioDetail;
+use App\Models\PortfolioCategory;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -48,13 +49,23 @@ class HomeController extends Controller
 
     //for portfolio list
 
-public function portfolioList()
+public function portfolioList(Request $request)
 {
-    // Fetch all portfolio details
+    // $query = PortfolioDetail::query();
+
+    // Filter by category
+    // if ($request->has('category') && $request->category != '') {
+    //     $query->where('category_id', $request->category);
+    // }
+
     $portfolio_details = PortfolioDetail::latest()->get();
+
+    // Load categories for filter dropdown
+    // $categories = PortfolioCategory::all();
 
     return view('portfolios.index', compact('portfolio_details'));
 }
+
 
 public function portfolioDetail(PortfolioDetail $portfolio_detail)
 {

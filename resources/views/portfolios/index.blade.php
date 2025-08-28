@@ -22,8 +22,8 @@
         <div class="text-center">
             <h6 class="shadow-lg p-1 p-sm-3 mb-5 bg-body-tertiary rounded d-inline-block">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <a href="#" class="btn btn-danger">All</a>
-                    <a href="{{ route('portfolios.index') }}" class="btn btn-outline-danger">Brand App</a>
+                    <a href="{{ route('portfolios.index') }}" class="btn btn-danger">All</a>
+                    <a href="#" class="btn btn-outline-danger">Brand App</a>
                     <a href="#" class="btn btn-outline-danger">iOS App</a>
                     <a href="#" class="btn btn-outline-danger">More Page</a>
                     <a href="#" class="btn btn-outline-danger">Site</a>

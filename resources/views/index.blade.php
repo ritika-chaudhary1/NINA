@@ -99,7 +99,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="{{ route('portfolio.index') }}" class="btn btn-outline-danger">See More Works</a>
+            <a href="{{ route('portfolios.index') }}" class="btn btn-outline-danger">See More Works</a>
         </div>
     </div>
 </section>
