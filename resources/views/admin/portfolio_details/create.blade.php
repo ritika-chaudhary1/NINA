@@ -49,12 +49,25 @@
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
             <input type="text" id="location" name="location" class="form-control" value="{{ old('location') }}">
-        </div>
+        </div>     
 
         <div class="mb-3">
-            <label for="image" class="form-label">Image (optional)</label>
-            <input type="file" id="image" name="image" class="form-control" accept="image/*">
-        </div>
+    <label for="image" class="form-label">Main Image</label>
+    <input type="file" id="image" name="image" class="form-control" accept="image/*">
+</div>
+
+<div class="mb-3">
+    <label for="extra_images" class="form-label">Extra Images</label>
+    <input type="file" id="extra_images" name="extra_images[]" class="form-control" accept="image/*" multiple>
+    <small class="text-muted">You can select multiple extra images</small>
+</div>
+
+            <div class="mb-3">
+                <label for="optional_image" class="form-label">Optional Image</label>
+                <input type="file" id="optional_image" name="optional_image" class="form-control" accept="image/*">
+            </div>
+
+<!-- Removed duplicate image input to ensure only one main image can be uploaded -->
 
         <button type="submit" class="btn btn-primary">Create</button>
         <a href="{{ route('admin.portfolio_details.index') }}" class="btn btn-secondary">Back</a>

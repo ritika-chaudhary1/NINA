@@ -51,21 +51,23 @@ class HomeController extends Controller
 
 public function portfolioList(Request $request)
 {
-    // $query = PortfolioDetail::query();
+    $query = PortfolioDetail::query();
 
-    // Filter by category
-    // if ($request->has('category') && $request->category != '') {
-    //     $query->where('category_id', $request->category);
-    // }
+    // ✅ Filter by category
+    if ($request->has('category') && $request->category != 'all' && $request->category != '') {
+        $query->where('portfolio_category_id', $request->category);
+    }
 
-    $portfolio_details = PortfolioDetail::latest()->get();
+    $portfolio_details = $query->latest()->get();
 
-    // Load categories for filter dropdown
-    // $categories = PortfolioCategory::all();
+    // ✅ Load categories for filter buttons
+    $categories = PortfolioCategory::all();
 
-    return view('portfolios.index', compact('portfolio_details'));
+    // ✅ Send selected category to view (for highlighting active button)
+    $selectedCategory = $request->get('category', 'all');
+
+    return view('portfolios.index', compact('portfolio_details', 'categories', 'selectedCategory'));
 }
-
 
 public function portfolioDetail(PortfolioDetail $portfolio_detail)
 {

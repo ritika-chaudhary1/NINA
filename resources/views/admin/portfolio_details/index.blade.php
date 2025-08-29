@@ -5,8 +5,6 @@
 @section('content')
 <div class="container py-4">
     <h1>Portfolio Details</h1>
-    <a href="{{ route('admin.portfolio_details.create') }}" class="btn btn-primary mb-3">Create New Portfolio Detail</a>
-
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -31,10 +29,13 @@
             <td>{{ $detail->subtitle }}</td>
             <td>{{ $detail->category->category_name ?? '-' }}</td> <!-- Show category -->
             <td>
-                @if($detail->image)
-                    <img src="{{ asset('storage/' . $detail->image) }}" alt="Image" width="60" />
-                @endif
-            </td>
+                    @php
+                        $mainImage = !empty($detail->image) ? $detail->image : null;
+                    @endphp
+                    @if($mainImage)
+                        <img src="{{ asset('storage/' . $mainImage) }}" alt="Main Image" width="60">
+                    @endif
+                </td>
             <td>{{ \Illuminate\Support\Str::limit($detail->description, 80) }}</td>
                <td>{{ $detail->client ?? 'N/A' }}</td>
                <td>{{ $detail->location ?? 'N/A' }}</td>
