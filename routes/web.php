@@ -30,7 +30,6 @@ use App\Http\Controllers\{
 // Services page
 Route::get('/service', [ServiceController::class, 'frontendIndex'])->name('service.index');
 
-
 Route::get('/contacts_us', function () {
     return view('contacts_us.index');
 })->name('contacts_us.index');

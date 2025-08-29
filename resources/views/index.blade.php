@@ -64,6 +64,7 @@
                         @endforeach
                     </div>
                 </div>
+                
                 @endforeach
 
                  
@@ -98,7 +99,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="{{ route('portfolio.index') }}" class="btn btn-outline-danger">See More Works</a>
+            <a href="{{ route('portfolios.index') }}" class="btn btn-outline-danger">See More Works</a>
         </div>
     </div>
 </section>
@@ -231,9 +232,9 @@
         </section>
 
        <!-- Clients section -->
-<section class="clients-section text-center bg-black py-5 rounded-3" id="clients">
+<section class="clients-section text-center py-5 rounded-3" id="clients">
     <h6 class="section-heading text-center">POPULAR CLIENTS</h6>
-    <h2 class="section-title text-white text-center pt-3 mb-5">Awesome <span class="text-danger">Clients</span></h2>
+    <h2 class="section-title text-dark text-center pt-3 mb-5">Awesome <span class="text-danger">Clients</span></h2>
 
     <div class="container-fluid">
         <div class="container border-top border-bottom border-dark mb-4">
@@ -406,6 +407,92 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </section> --}}
+
+{{-- <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Info -->
+        <div class="col-md-4 mb-4">
+          <h5 class="mb-4">Contact Info</h5>
+          <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-phone-volume mt-1 text-white"></i></i>+32 (0) 333 444 555</p>
+          <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-location-dot mt-1 text-white"></i>5B Street, City 50987 New Town US</p>
+          <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-envelope-circle-check mt-1 text-white"></i></i>htmlstream@support.com</p>
+
+          <h5 class="mt-5">Social Networks</h5>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+          </div>
+        </div> --}}
+
+        <!-- Contact Form -->
+        {{-- <div class="col-md-8 border border-white p-5">
+            
+          <h3 class="mb-5">Contact Us</h3>
+          <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer> --}}
+
+  {{-- <footer class="footer mt-3">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-4">Contact Info</h5>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-phone-volume mt-1 text-white"></i>+32 (0) 333 444 555</p>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-location-dot mt-1 text-white"></i>5B Street, City 50987 New Town US</p>
+                <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-envelope-circle-check mt-1 text-white"></i>htmlstream@support.com</p>
+
+                <h5 class="mt-5">Social Networks</h5>
+                <div class="social-icons mt-3">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                </div>
+            </div>
+
+            <!-- Backend Contact Form -->
+            <div class="col-md-8 p-5 border border-secondary">
+                <h3 class="mb-5">Contact Us</h3>
+                <form class="contact-form" action="{{ route('contact_us.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <input type="text" name="name" class="form-control" placeholder="Your name" required />
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Your email" required />
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject" />
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer> --}}
+
+
+
+   
+
+
     @endsection
+
+
+

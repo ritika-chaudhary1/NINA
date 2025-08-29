@@ -37,15 +37,34 @@
                                         {{ $category->status ? 'Active' : 'Inactive' }}
                                     </span>
                                 </td>
+                              
+
                                 <td>
-                                    <a href="{{ route('admin.service-categories.show', $category) }}" class="btn btn-sm btn-info">View</a>
-                                    <a href="{{ route('admin.service-categories.edit', $category) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('admin.service-categories.destroy', $category) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
-                                    </form>
-                                </td>
+    <!-- View Button -->
+    <a href="{{ route('admin.service-categories.show', $category) }}" 
+       class="btn btn-sm btn-outline-primary" title="View">
+        <i class="fas fa-eye"></i>
+    </a>
+
+    <!-- Edit Button -->
+    <a href="{{ route('admin.service-categories.edit', $category) }}" 
+       class="btn btn-sm btn-outline-secondary" title="Edit">
+        <i class="fas fa-edit"></i>
+    </a>
+
+    <!-- Delete Button -->
+    <form action="{{ route('admin.service-categories.destroy', $category) }}" 
+          method="POST" class="d-inline"
+          onsubmit="return confirm('Are you sure you want to delete this category?')">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-outline-danger" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </form>
+</td>
+
+
                             </tr>
                         @empty
                             <tr>

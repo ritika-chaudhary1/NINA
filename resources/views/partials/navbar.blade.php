@@ -21,18 +21,9 @@
                         <span><i class="fas fa-phone-alt me-2"></i>(+778) 000-0665</span>
                         <span class="ms-1"><i class="fas fa-envelope me-2"></i>nina99@gmail.com</span>
                     </div>
-                    {{-- <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
-  @auth
-    <form method="POST" action="{{ route('admin.logout') }}">
-      @csrf
-      <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-    </form>
-  @else
-    <a href="{{ route('admin.login') }}" class="btn btn-primary btn-sm">Login</a>
-  @endauth
-</div> --}}
+                
 
-<div class="col-12 col-md-6 text-center text-md-end">
+                    <div class="col-12 col-md-6 text-center text-md-end">
                         <i class="fab fa-facebook-f ms-2"></i> <i class="fab fa-twitter ms-2"></i> <i class="fab fa-instagram ms-2"></i>
                     </div>
 
@@ -57,15 +48,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ps-5 gap-4 d-flex justify-content-between">
-                  <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-  <a class="nav-link" href="{{ route('service.index') }}">Features</a>
-<li class="nav-item"><a class="nav-link" href="{{ route('portfolios.index') }}">Portfolio</a></li>
-<li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ route('contacts_us.index')}}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                    <a class="nav-link" href="{{ route('service.index') }}">Features</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('portfolios.index') }}">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contacts_us.index')}}">Contact</a></li>
 
                     </ul>
-                    <button class="btn btn-danger ms-auto mx-3">Start Project</button>
+                    <a href="#" class="btn btn-danger ms-auto mx-3">Start Project</a>
                 </div>
             </div>
         </nav>

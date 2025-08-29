@@ -15,15 +15,33 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">{{ $detail->service->title }} - {{ $detail->heading }}</h5>
+          
             <div class="btn-group" role="group">
-                <a href="{{ route('admin.service_details.show', $detail->id) }}" class="btn btn-info btn-sm">View</a>
-                <a href="{{ route('admin.service_details.edit', $detail->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <form action="{{ route('admin.service_details.destroy', $detail->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this detail?');">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm">Delete</button>
-                </form>
-            </div>
+    <!-- View Button -->
+    <a href="{{ route('admin.service_details.show', $detail->id) }}" 
+       class="btn btn-sm btn-outline-primary" title="View">
+        <i class="fas fa-eye"></i>
+    </a>
+
+    <!-- Edit Button -->
+    <a href="{{ route('admin.service_details.edit', $detail->id) }}" 
+       class="btn btn-sm btn-outline-secondary" title="Edit">
+        <i class="fas fa-edit"></i>
+    </a>
+
+    <!-- Delete Button -->
+    <form action="{{ route('admin.service_details.destroy', $detail->id) }}" 
+          method="POST" class="d-inline"
+          onsubmit="return confirm('Are you sure you want to delete this service detail?')">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-outline-danger" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </form>
+</div>
+
+
         </div>
         <div class="card-body">
             <div class="row">

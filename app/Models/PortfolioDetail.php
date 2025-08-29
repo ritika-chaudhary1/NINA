@@ -13,9 +13,15 @@ class PortfolioDetail extends Model
         'title',
         'subtitle',
         'image',
+        'optional_image',
         'description',
         'client',
         'location',
+        'extra_images',
+    ];
+
+    protected $casts = [
+        'extra_images' => 'array',
     ];
 
     public function category()

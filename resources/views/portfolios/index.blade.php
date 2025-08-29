@@ -22,11 +22,13 @@
         <div class="text-center">
             <h6 class="shadow-lg p-1 p-sm-3 mb-5 bg-body-tertiary rounded d-inline-block">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <a href="#" class="btn btn-danger">All</a>
-                    <a href="{{ route('portfolios.index') }}" class="btn btn-outline-danger">Brand App</a>
-                    <a href="#" class="btn btn-outline-danger">iOS App</a>
-                    <a href="#" class="btn btn-outline-danger">More Page</a>
-                    <a href="#" class="btn btn-outline-danger">Site</a>
+                    <a href="{{ route('portfolios.index') }}" class="btn btn-danger">All</a>
+                    @foreach($categories as $category)
+        <a href="{{ route('portfolios.index', ['category' => $category->id]) }}" 
+           class="btn btn-outline-danger {{ $selectedCategory == $category->id ? 'active' : '' }}">
+            {{ $category->category_name }}
+        </a>
+    @endforeach
                 </div>
             </h6>
         </div>
@@ -52,7 +54,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="{{ route('admin.portfolio_details.index') }}" class="btn btn-outline-danger">See More Works</a>
+            <a href="{{ route('portfolios.index') }}" class="btn btn-outline-danger">See More Works</a>
         </div>
     </div>
 </section>

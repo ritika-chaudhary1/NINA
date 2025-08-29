@@ -32,14 +32,25 @@
                             <span class="text-muted">No categories</span>
                         @endif
                     </td>
-                    <td>
-                        <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" style="display:inline;">
+                   
+                     <td>
+                        <a href="{{ route('admin.services.show', $service->id) }}" class="btn btn-sm btn-outline-primary" title="View">
+                            <i class="fas fa-eye"></i>
+                        </a>
+
+                        <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-sm btn-outline-secondary" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this service?')">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Delete this service?')">Delete</button>
+                            <button class="btn btn-sm btn-outline-danger" title="Delete">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </form>
                     </td>
+
                 </tr>
             @empty
                 <tr>

@@ -5,19 +5,19 @@
     <section class="hero-section mb-2 rounded-bottom-3">
         <div class="container">
             <div class="row text-center text-white">
-                {{-- <h1>{{ $service->title }} - Service Details</h1> --}}
+              
                 <h1> Service Details</h1>
                 
                 <p>
                     <a href="{{ url('/') }}">Home</a> /
                     <a href="{{ route('service.index') }}">Services All</a> 
-                    {{-- <span>{{ $service->title }}</span> --}}
+                
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Service Details Section (Backend-driven) -->
+    <!-- Service Details Section (Backend) -->
     <section class="content container-fluid py-5 my-3 rounded-3">
         <div class="container">
             @php
