@@ -403,4 +403,43 @@
  opacity: 0.7;
 } */
 
+
+.about-section {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-section h2 {
+    font-size: 2.2rem;
+    line-height: 1.4;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about-section img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.about-section img:hover {
+    transform: scale(1.03);
+}
+
+.btn-dark {
+    background-color: #212529;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #343a40;
+}
+
+
+    
+  
     

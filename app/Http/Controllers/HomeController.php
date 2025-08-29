@@ -85,4 +85,7 @@ public function serviceDetail(Service $service)
     return view('service_detail.index', compact('service', 'serviceDetails'));
 }
     
+
+
+
 }
