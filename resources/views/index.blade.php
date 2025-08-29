@@ -20,6 +20,7 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-4 d-flex text-align-center gx-3">
+
                                 <h1 class="text-white">16</h1>
                                 <p class="hero-text"> Years of Experience</p>
                             </div>
@@ -254,6 +255,9 @@
 </section>
 
 
+
+
+
         <!-- Pricing Section -->
         {{-- <section class="pricing-section py-5 mt-3 mb-2 rounded-3">
             <div class="container">
@@ -410,11 +414,11 @@
     </div>  
 </section> --}}
 
-{{-- <footer class="footer">
-    <div class="container">
-      <div class="row">
+
+{{-- about us section --}}
+
         <!-- Contact Info -->
-        <div class="col-md-4 mb-4">
+        {{-- <div class="col-md-4 mb-4">
           <h5 class="mb-4">Contact Info</h5>
           <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-phone-volume mt-1 text-white"></i></i>+32 (0) 333 444 555</p>
           <p class="d-flex gap-2 contact-text"><i class="fa-solid fa-location-dot mt-1 text-white"></i>5B Street, City 50987 New Town US</p>
@@ -427,7 +431,7 @@
             <a href="#"><i class="fa-brands fa-github"></i></a>
             <a href="#"><i class="fa-brands fa-dribbble"></i></a>
           </div>
-        </div> --}}
+        </div> --}} 
 
         <!-- Contact Form -->
         {{-- <div class="col-md-8 border border-white p-5">
