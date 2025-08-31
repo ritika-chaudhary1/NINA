@@ -6,34 +6,40 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <h3 class="hero-text text-white">HELLO,<span class="text-danger"> I AM</span></h3>
-                        <h1 class="hero-title">Shahbaz <span class="text-danger"> Ali</span></h1>
-                        <h3 class="hero-text text-white">I AM <span class="fst-italic">WordPress Developer</span></h3>
+                        <h3 class="hero-text text-white mb-2">HELLO,<span class="text-danger"> I AM</span></h3>
+                        {{-- <h1 class="hero-title">Shahbaz <span class="text-danger"> Ali</span></h1> --}}
+
+                             <h1 class="hero-title">
+                              <span id="typed-first" class="text-white"></span>
+                                 <span id="typed-last" class="text-danger"></span>
+                                </h1>
+
+
+
+                        <h3 class="hero-text text-white mb-3">Founder & CEO of Matinsoftech | <span class="fst-italic">Full Stack  Developer</span></h3>
                         <p class="hero-text">
-                            I'm a Web developer & I'm very passionate and dedicated to my work. I have acquired the skills
-                            and knowledge
-                            necessary to make your project a success.
+                           I am the founder and CEO of <span class="fst-italic text-danger">Matinsoftech</span>, a leading IT solutions company. With 10+ years of experience as a <span class="fst-italic text-danger">Full Stack Developer</span>, I specialize in building innovative, scalable, and user-friendly digital products. My journey combines deep technical expertise with strong leadership, helping businesses transform their ideas into successful digital solutions.
+
                         </p>
                         <div class="hero-buttons">
                             <button class="btn btn-outline-danger text me-3">Hire Me</button>
                             <button class="btn btn-danger">Download CV</button>
                         </div>
-                        <div class="row pt-4">
-                            <div class="col-lg-4 d-flex text-align-center gx-3">
-
-                                <h1 class="text-white">16</h1>
-                                <p class="hero-text"> Years of Experience</p>
-                            </div>
-                            <div class="col-lg-4 d-flex text-align-center gx-3">
-                                <h1 class="text-white">6k</h1>
-                                <p class="hero-text"> Clients worldwide</p>
-                            </div>
-                            <div class="col-lg-4 d-flex text-align-center gx-3">
-                                <h1 class="text-white">2k</h1>
-                                <p class="hero-text"> Completed Projects</p>
-                            </div>
+                        
+                   <div class="row pt-4">
+                     <div class="col-lg-4 d-flex flex-column align-items-center gx-3">
+                     <h1 class="text-white counter" data-target="10" data-suffix="+">0</h1>
+                     <p class="hero-text">Years of Experience</p>
                         </div>
-                    </div>
+                         <div class="col-lg-4 d-flex flex-column align-items-center gx-3">
+                            <h1 class="text-white counter" data-target="6000" data-suffix="k">0</h1>
+                            <p class="hero-text">Clients Worldwide</p>
+                          </div>
+                       <div class="col-lg-4 d-flex flex-column align-items-center gx-3">
+                             <h1 class="text-white counter" data-target="2000" data-suffix="k">0</h1>
+                          <p class="hero-text">Completed Projects</p>
+                </div>
+                   </div>  </div>
                     <div class="col-lg-6">
                         <img src="{{ asset('images/developer.webp') }}" alt="Developer" class="img-fluid rounded" />
                     </div>
