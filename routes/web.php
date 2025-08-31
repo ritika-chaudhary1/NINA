@@ -58,6 +58,11 @@ Route::view('/pricing', 'pricing')->name('pricing');
 Route::view('/contact', 'contact')->name('contact');
 Route::get('/contacts_us', function () { return view('contacts_us.index'); })->name('contacts_us.index');
 
+// Document root test route
+Route::get('/check-public', function () {
+    return 'Laravel is serving from public/index.php';
+});
+
 // Contact form submission
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
 Route::post('/contact-submit', [ContactUsController::class, 'store'])->name('contact.submit');

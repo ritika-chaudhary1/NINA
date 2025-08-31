@@ -19,7 +19,25 @@ Visit your domain and look for these signs:
 - Laravel files are NOT visible in browser
 - Trying to access `.env` returns 404
 
-### Method 2: Test Security
+### Method 2: Simple File Test
+I've created a test file for you. Visit:
+```
+https://yourdomain.com/test.txt
+```
+
+**✅ CORRECT:** Shows "PUBLIC DIRECTORY IS WORKING"
+**❌ WRONG:** Shows 404, downloads file, or shows Laravel folders
+
+### Method 3: Laravel Route Test
+Visit this URL:
+```
+https://yourdomain.com/check-public
+```
+
+**✅ CORRECT:** Shows "Laravel is serving from public/index.php"
+**❌ WRONG:** Shows raw PHP code or 404
+
+### Method 4: Security Test
 Try accessing these URLs (they should return 404 if configured correctly):
 ```
 https://yourdomain.com/.env
