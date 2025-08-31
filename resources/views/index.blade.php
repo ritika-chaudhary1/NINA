@@ -15,7 +15,7 @@
                             necessary to make your project a success.
                         </p>
                         <div class="hero-buttons">
-                            <button class="btn btn-outline-danger text me-3">Hire Me</button>
+                            {{-- <button class="btn btn-outline-danger text me-3">Hire Me</button> --}}
                             <button class="btn btn-danger">Download CV</button>
                         </div>
                         <div class="row pt-4">

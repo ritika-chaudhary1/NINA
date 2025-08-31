@@ -14,7 +14,7 @@
 <body>
     <section class="header">
         <!-- Top Bar -->
-        <div class="top-bar mt-2 rounded-top-3">
+        <div class="top-bar">
             <div class="container bg-black">
                 <div class="row pt-3 pb-3">
                     <div class="col-12 col-md-6 text-center text-md-start">
@@ -24,7 +24,9 @@
                 
 
                     <div class="col-12 col-md-6 text-center text-md-end">
-                        <i class="fab fa-facebook-f ms-2"></i> <i class="fab fa-twitter ms-2"></i> <i class="fab fa-instagram ms-2"></i>
+                        <a href="#" class="text-white nav-icon"><i class="fab fa-facebook-f ms-2"></i></a>
+                        <a href="#" class="text-white nav-icon"><i class="fab fa-twitter ms-2"></i></a>
+                        <a href="#" class="text-white nav-icon"><i class="fab fa-instagram ms-2"></i></a>
                     </div>
 
                 </div>
@@ -32,31 +34,30 @@
         </div>
 
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-            <div class="container rounded-3 bg-white">
-                <a class="navbar-brand fs-1 ps-3 pe-5" href="#">NINA</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ps-5 gap-4 d-flex justify-content-between">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                    <a class="nav-link" href="{{ route('service.index') }}">Features</a>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('portfolios.index') }}">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('contacts_us.index')}}">Contact</a></li>
-
-                    </ul>
-                    <a href="#" class="btn btn-danger ms-auto mx-3">Start Project</a>
-                </div>
-            </div>
-        </nav>
+       <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <div class="container rounded-3 bg-white">
+        <a class="navbar-brand fs-1 ps-3 pe-5 text-black" href="#">NINA</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ps-5 gap-4 d-flex justify-content-between">
+                <li class="nav-item"><a class="nav-link text-black" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="{{ route('service.index') }}">Features</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="{{ route('portfolios.index') }}">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#clients">Clients</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="{{ route('blog.index') }}">Blog</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="{{ route('contacts_us.index') }}">Contact</a></li>
+            </ul>
+            <a href="#" class="btn nav-btn border-2 text-danger border-danger rounded ms-auto mx-3">Start Project</a>
+        </div>
+    </div>
+</nav>
