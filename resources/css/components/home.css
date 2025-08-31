@@ -22,8 +22,8 @@
 }
 
 .hero-text {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    /* margin-bottom: 10px; */
     color: var(--gray-color);
 }
 
@@ -404,7 +404,7 @@
 } */
 
 
-.about-section {
+/* .about-section {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -437,7 +437,7 @@
 
 .btn-dark:hover {
     background-color: #343a40;
-}
+} */
 
 
     
