@@ -1,6 +1,17 @@
-@extends('layouts.app') {{-- or your admin layout --}}
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    
 <div class="container mt-4">
     <h2>Admin Profile</h2>
 
@@ -39,7 +50,7 @@
                    name="password" 
                    id="password" 
                    class="form-control @error('password') is-invalid @enderror"
-                   autocomplete="new-password">
+                   autocomplete="new-password" required>
             @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
 
@@ -49,7 +60,7 @@
                    name="password_confirmation" 
                    id="password_confirmation" 
                    class="form-control" 
-                   autocomplete="new-password">
+                   autocomplete="new-password" required>
         </div>
 
         <div class="mb-3">
@@ -61,15 +72,16 @@
     </div>
 
     @if ($admin->profile_photo)
-      <div class="mb-3">
-<img 
-  src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('default-profile.png') }}" 
-  alt="Admin Profile" 
-  style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-      </div>
-    @endif
+  <div class="mb-3">
+    <img 
+      src="{{ asset('storage/' . $admin->profile_photo) }}" 
+      alt="Admin Profile" 
+      style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+  </div>
+@endif
 
         <button type="submit" class="btn btn-primary">Update Profile</button>
     </form>
 </div>
-@endsection
+</body>
+</html>

@@ -143,11 +143,16 @@ nav.navbar .btn-outline-light:hover {
   <!-- Right-side user dropdown -->
   <div class="dropdown ms-auto">
     <button class="btn btn-outline-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fas fa-user-circle me-1"></i> Admin
+      @if(Auth::user()->profile_photo)
+        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile" style="width:25px; height:25px; border-radius:50%; object-fit:cover; margin-right:8px;">
+      @else
+        <i class="fas fa-user-circle me-1"></i>
+      @endif
+      Admin
     </button>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
       <li>
-        <a class="dropdown-item" href="{{ route('admin.profile') }}">
+        <a class="dropdown-item" href="{{ route('admin.profile.show') }}">
           <i class="fas fa-user me-2"></i> My Profile
         </a>
       </li>

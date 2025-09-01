@@ -24,9 +24,9 @@
                 
 
                     <div class="col-12 col-md-6 text-center text-md-end">
-                        <a href="#" class="text-white nav-icon"><i class="fab fa-facebook-f ms-2"></i></a>
-                        <a href="#" class="text-white nav-icon"><i class="fab fa-twitter ms-2"></i></a>
-                        <a href="#" class="text-white nav-icon"><i class="fab fa-instagram ms-2"></i></a>
+                        <a href="https://www.facebook.com/" class="text-white nav-icon"><i class="fab fa-facebook-f ms-2"></i></a>
+                        <a href="https://x.com/?&" class="text-white nav-icon"><i class="fab fa-twitter ms-2"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white nav-icon"><i class="fab fa-instagram ms-2"></i></a>
                     </div>
 
                 </div>

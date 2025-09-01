@@ -130,3 +130,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
     Route::delete('/contact-us/{contactUs}', [ContactUsController::class, 'destroy'])->name('contact_us.destroy'); 
 });
+
+// Show admin profile
+Route::get('/admin/profile', [AdminProfileController::class, 'show'])
+    ->name('admin.profile.show')
+    ->middleware('auth');
+
+// Update admin profile
+Route::post('/admin/profile', [AdminProfileController::class, 'update'])
+    ->name('admin.profile.update')
+    ->middleware('auth');
