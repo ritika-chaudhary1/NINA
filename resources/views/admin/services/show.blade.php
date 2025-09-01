@@ -23,5 +23,5 @@
         <p>No details available.</p>
     @endif
 
-    <a href="{{ route('adminservices.index') }}" class="btn btn-secondary mt-3">Back</a>
+    <a href="{{ route('admin.services.index') }}" class="btn btn-secondary mt-3">Back</a>
 @endsection

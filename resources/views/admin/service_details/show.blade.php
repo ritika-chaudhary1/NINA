@@ -17,9 +17,9 @@
                     <p class="mb-3">{{ $detail->description }}</p>
                     @endif
                     
-                    <div class="text-muted">
+                    {{-- <div class="text-muted">
                         <small>Order: {{ $detail->order ?? 'Not set' }}</small>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-4">
                     @if($detail->image)

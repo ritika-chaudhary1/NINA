@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -33,9 +34,10 @@ public function update(Request $request)
         $admin->password = Hash::make($request->password);
     }
 
-    // Handle profile photo upload
+         // Handle profile photo upload
+
     if ($request->hasFile('profile_photo')) {
-        // Delete old photo if exists
+        
         if ($admin->profile_photo) {
             Storage::delete($admin->profile_photo);
         }
@@ -43,8 +45,10 @@ public function update(Request $request)
         $admin->profile_photo = $path;
 
     }
+      
 
-    $admin->save();
+   
+
 
 return redirect()->route('admin.dashboard')->with('success', 'Profile updated successfully.');
 }

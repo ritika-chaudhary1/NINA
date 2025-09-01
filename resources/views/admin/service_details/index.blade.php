@@ -18,10 +18,10 @@
           
             <div class="btn-group" role="group">
     <!-- View Button -->
-    <a href="{{ route('admin.service_details.show', $detail->id) }}" 
+    {{-- <a href="{{ route('admin.service_details.show', $detail->id) }}" 
        class="btn btn-sm btn-outline-primary" title="View">
         <i class="fas fa-eye"></i>
-    </a>
+    </a> --}}
 
     <!-- Edit Button -->
     <a href="{{ route('admin.service_details.edit', $detail->id) }}" 
@@ -48,15 +48,15 @@
                 <div class="col-md-8">
                     <h6 class="text-muted">Content:</h6>
                     <p class="mb-3">{{ $detail->content }}</p>
-                    
+                     
                     @if($detail->description)
                     <h6 class="text-muted">Description:</h6>
                     <p class="mb-3">{{ $detail->description }}</p>
                     @endif
                     
-                    <div class="text-muted">
+                    {{-- <div class="text-muted">
                         <small>Order: {{ $detail->order ?? 'Not set' }}</small>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-4">
                     @if($detail->image)
