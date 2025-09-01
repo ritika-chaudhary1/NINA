@@ -62,22 +62,15 @@
 
     @if ($admin->profile_photo)
       <div class="mb-3">
-{{-- <img 
+ <img 
   src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('default-profile.png') }}" 
   alt="Admin Profile" 
-  style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;"> --}}
+  style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
 
-  {{-- <img 
-    src="{{ $admin->profile_photo ? asset('storage/' . $admin->profile_photo) : asset('default-profile.png') }}" 
-    alt="Admin Profile" 
-    style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+  
+      </div> 
 
-      </div> --}}
-
-      {{-- <img 
-    src="{{ $admin->profile_photo && file_exists(public_path('storage/' . $admin->profile_photo)) ? asset('storage/' . $admin->profile_photo) : asset('default-profile.png') }}" 
-    alt="Admin Profile" 
-    style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+   
 
     @endif
 
