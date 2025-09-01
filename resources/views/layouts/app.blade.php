@@ -1,27 +1,4 @@
 {{-- 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'NINA-DEVELOPER')</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body>
-
-    @include('partials.navbar')
-
-    <main>
-        @yield('content')
-    </main>
-
-    @include('partials.footer')
-
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,23 +23,54 @@
     </section>
 
        {{-- Hero Section --}}
-    @hasSection('hero')
+    {{-- @hasSection('hero')
         @yield('hero')
     @endif
 
     {{-- Main content --}}
-    <main>
+    {{-- <main>
         @yield('content')
-    </main>
+    </main> --}}
 
     {{-- Contact section (optional) --}}
-    @if ($showContact ?? true)
+    {{-- @if ($showContact ?? true)
         @include('partials.contact')
-    @endif
+    @endif --}}
 
     {{-- Footer --}}
-    @include('partials.footer')
+    {{-- @include('partials.footer')
 
     @stack('scripts')
+</body>
+</html>   --}}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+
+        {{-- Show navbar only if NOT on login page --}}
+        @if (!Request::is('admin/login'))
+            @include('partials.navbar')
+        @endif
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+
+        {{-- Show footer only if NOT on login page --}}
+        @if (!Request::is('admin/login'))
+            @include('partials.footer')
+        @endif
+
+    </div>
 </body>
 </html>

@@ -9,7 +9,9 @@ class ServiceDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_id', 'heading', 'content', 'description', 'image', 'order'];
+    protected $fillable = ['service_id', 'heading', 'content', 'description', 'image', 'image_two',          
+    'personal_experience', 
+    'our_processing',    ];
 
     public function service()
     {

@@ -1,56 +1,91 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container mt-4">
+<div class="container mt-3">
     <h2>Add Service Detail</h2>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                   <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ route('admin.service_details.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
+        <!-- Select Service -->
         <div class="mb-3">
             <label for="service_id" class="form-label">Select Service</label>
             <select name="service_id" id="service_id" class="form-control" required>
                 <option value="">-- Choose Service --</option>
-                @foreach($services as $service)
+                @foreach ($services as $service)
                     <option value="{{ $service->id }}" {{ old('service_id') == $service->id ? 'selected' : '' }}>
                         {{ $service->title }}
                     </option>
                 @endforeach
             </select>
-            @error('service_id')<small class="text-danger">{{ $message }}</small>@enderror
         </div>
 
+        <!-- Heading -->
         <div class="mb-3">
             <label for="heading" class="form-label">Heading</label>
-            <input type="text" name="heading" class="form-control" value="{{ old('heading') }}" required>
-            @error('heading')<small class="text-danger">{{ $message }}</small>@enderror
+            <input type="text" name="heading" id="heading" class="form-control" value="{{ old('heading') }}" required>
         </div>
 
-        <div class="mb-3">
+        <!-- Content -->
+         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea name="content" class="form-control" rows="5" required>{{ old('content') }}</textarea>
-            @error('content')<small class="text-danger">{{ $message }}</small>@enderror
+            <textarea name="content"  class="form-control" rows="5" required>{{ old('content') }}</textarea>
+        </div> 
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Description (Optional)</label>
+            <textarea name="description" id="description" class="form-control" rows="3">{{ old('description') }}</textarea>
         </div>
 
+        <!-- Personal Experience -->
         <div class="mb-3">
-            <label for="description" class="form-label">Description (optional)</label>
-            <textarea name="description" class="form-control" rows="4">{{ old('description') }}</textarea>
-            @error('description')<small class="text-danger">{{ $message }}</small>@enderror
+            <label for="personal_experience" class="form-label">Personal Experience</label>
+            <textarea name="personal_experience" id="personal_experience" class="form-control" rows="3">{{ old('personal_experience') }}</textarea>
         </div>
 
+        <!-- Our Processing -->
         <div class="mb-3">
-            <label for="image" class="form-label">Image (optional)</label>
-            <input type="file" name="image" class="form-control">
-            @error('image')<small class="text-danger">{{ $message }}</small>@enderror
+            <label for="our_processing" class="form-label">Our Processing</label>
+            <textarea name="our_processing" id="our_processing" class="form-control" rows="3">{{ old('our_processing') }}</textarea>
         </div>
 
+        <!-- First Image -->
         <div class="mb-3">
+            <label for="image" class="form-label">Main Image</label>
+            <input type="file" name="image" id="image" class="form-control" accept="image/*">
+        </div>
+
+        <!-- Second Image -->
+        <div class="mb-3">
+            <label for="image_two" class="form-label">Secondary Image</label>
+            <input type="file" name="image_two" id="image_two" class="form-control" accept="image/*">
+        </div>
+
+        <!-- Order -->
+        {{-- <div class="mb-3">
+            <label for="order" class="form-label">Order</label>
+            <input type="number" name="order" id="order" class="form-control" value="{{ old('order', 0) }}">
+        </div> --}}
+
+         {{-- <div class="mb-3">
             <label for="order" class="form-label">Order (optional)</label>
             <input type="number" name="order" class="form-control" value="{{ old('order') }}">
             @error('order')<small class="text-danger">{{ $message }}</small>@enderror
-        </div>
+        </div> --}}
 
-        <button type="submit" class="btn btn-success">Add Detail</button>
+        <button type="submit" class="btn btn-primary">Add Service Detail</button>
     </form>
 </div>
 @endsection
+

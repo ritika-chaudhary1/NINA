@@ -44,12 +44,19 @@ class ServiceDetailController extends Controller
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
             'description' => 'nullable|string',
-            'image'      => 'nullable|image|max:2048',
-            'order'      => 'nullable|integer',
+             'personal_experience' => 'nullable|string', // ✅ NEW
+            'our_processing' => 'nullable|string', // ✅ NEW
+            'image' => 'nullable|image|max:2048',
+              'image_two'=> 'nullable|image|max:2048', // ✅ NEW
+            'order'=> 'nullable|integer',
         ]);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('service_details', 'public');
+        }
+
+         if ($request->hasFile('image_two')) { // ✅ NEW
+            $validated['image_two'] = $request->file('image_two')->store('service_details', 'public');
         }
 
         ServiceDetail::create($validated);
@@ -80,16 +87,29 @@ class ServiceDetailController extends Controller
             'heading'    => 'required|string|max:255',
             'content'    => 'required|string',
             'description' => 'nullable|string',
-            'image'      => 'nullable|image|max:2048',
+            'personal_experience'  => 'nullable|string', // ✅ NEW
+            'our_processing'       => 'nullable|string', // ✅ NEW
+            'image'                => 'nullable|image|max:2048',
+            'image_two'            => 'nullable|image|max:2048', // ✅ NEW
+            
             'order'      => 'nullable|integer',
         ]);
 
+        
+        // Handle first image
         if ($request->hasFile('image')) {
-            // Delete old image if exists
             if ($detail->image) {
                 Storage::disk('public')->delete($detail->image);
             }
             $validated['image'] = $request->file('image')->store('service_details', 'public');
+        }
+
+        // Handle second image ✅
+        if ($request->hasFile('image_two')) {
+            if ($detail->image_two) {
+                Storage::disk('public')->delete($detail->image_two);
+            }
+            $validated['image_two'] = $request->file('image_two')->store('service_details', 'public');
         }
 
         $detail->update($validated);
@@ -106,6 +126,10 @@ class ServiceDetailController extends Controller
 
         if ($detail->image) {
             Storage::disk('public')->delete($detail->image);
+        }
+
+         if ($detail->image_two) { // ✅ delete second image
+            Storage::disk('public')->delete($detail->image_two);
         }
 
         $detail->delete();
